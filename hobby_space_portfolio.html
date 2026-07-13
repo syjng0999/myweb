@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시간이 느리게 흐르는 뜨개와 짜릿한 모험 사이 ∙ 정소연</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        vanilla: '#FBF9F1',
+                        forest: '#2B4C3F',
+                        amberOrange: '#E28F43',
+                        softMint: '#E1EFEA',
+                        darkForest: '#1D352C',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts 연동 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Gowun+Dodum&family=DungGeunMo&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome (아이콘용) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* 폰트 적용 */
+        h1, h2, h3, h4, .font-title {
+            font-family: 'Gamja Flower', 'DungGeunMo', sans-serif;
+        }
+        body, p, span, input, textarea, button, select {
+            font-family: 'Gowun Dodum', sans-serif;
+            background-color: #FBF9F1;
+            color: #2B4C3F;
+        }
+        
+        /* 커스텀 스크롤바 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FBF9F1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2B4C3F;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E28F43;
+        }
+
+        /* 뜨개실 바늘 둥둥 뜨는 애니메이션 */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
+        }
+        .float-animation {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* 닌텐도 스위치 조이콘 깜빡임 애니메이션 */
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 0.8; box-shadow: 0 0 10px rgba(226, 143, 67, 0.5); }
+            50% { opacity: 1; box-shadow: 0 0 20px rgba(226, 143, 67, 0.9); }
+        }
+        .joycon-glow {
+            animation: pulse-glow 2.5s infinite;
+        }
+    </style>
+</head>
+<body class="selection:bg-amberOrange selection:text-white overflow-x-hidden">
+
+    <!-- 다운로드 플로팅 버튼 -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <button onclick="downloadSelf()" class="bg-forest hover:bg-amberOrange text-vanilla hover:text-white font-semibold py-3 px-5 rounded-full shadow-2xl transition-all duration-300 flex items-center gap-2 transform hover:scale-105 border-2 border-vanilla">
+            <i class="fa-solid fa-download"></i>
+            <span>HTML 소장하기</span>
+        </button>
+    </div>
+
+    <!-- 네비게이션 바 -->
+    <nav class="sticky top-0 z-40 bg-vanilla/90 backdrop-blur-md border-b border-forest/10 px-6 py-4 flex justify-between items-center">
+        <a href="#" class="text-2xl font-bold text-forest tracking-wider flex items-center gap-2">
+            <span class="text-3xl">🧶</span>
+            <span class="font-title">So-yeon's Cozy Space</span>
+            <span class="text-2xl">🎮</span>
+        </a>
+        <div class="hidden md:flex gap-6 text-sm font-semibold text-forest/80">
+            <a href="#intro" class="hover:text-amberOrange transition-colors">나의 소개</a>
+            <a href="#features" class="hover:text-amberOrange transition-colors">매력포인트</a>
+            <a href="#storyline" class="hover:text-amberOrange transition-colors">스토리 로드맵</a>
+            <a href="#games" class="hover:text-amberOrange transition-colors">추천 게임</a>
+            <a href="#abtest" class="hover:text-amberOrange transition-colors">미니 A/B 테스트</a>
+            <a href="#gallery" class="hover:text-amberOrange transition-colors">갤러리</a>
+            <a href="#guestbook" class="hover:text-amberOrange transition-colors">소통 공간</a>
+        </div>
+        <button onclick="document.getElementById('guestbook').scrollIntoView({behavior: 'smooth'})" class="bg-forest text-vanilla hover:bg-amberOrange px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300">
+            방명록 남기기
+        </button>
+    </nav>
+
+    <!-- 1. Hero Section -->
+    <header class="relative min-h-[90vh] flex flex-col justify-center items-center px-6 py-12 text-center overflow-hidden">
+        <!-- 배경 장식 데코 -->
+        <div class="absolute top-10 left-10 text-6xl opacity-10 select-none">🧶</div>
+        <div class="absolute bottom-20 right-10 text-6xl opacity-10 select-none">🎮</div>
+        <div class="absolute bottom-10 left-1/5 text-5xl opacity-10 select-none">📊</div>
+        <div class="absolute top-1/3 right-1/4 text-5xl opacity-10 select-none">💡</div>
+
+        <div class="max-w-4xl mx-auto space-y-8 z-10">
+            <!-- 배지 -->
+            <div class="inline-block bg-softMint text-forest text-xs font-semibold px-4 py-1.5 rounded-full border border-forest/20 tracking-wider uppercase">
+                🧶 Knitting ∙ Game ∙ Data ∙ Product Design 🎮
+            </div>
+
+            <!-- 메인 캐치프레이즈 -->
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-forest leading-tight tracking-wide drop-shadow-sm font-title">
+                시간이 느리게 흐르는 <span class="text-amberOrange underline decoration-wavy decoration-1 underline-offset-8">뜨개</span>와<br class="sm:hidden"> 
+                짜릿한 모험이 가득한 <span class="text-forest underline decoration-double decoration-1 underline-offset-8">게임</span> 사이
+            </h1>
+
+            <!-- 서브 슬로건 -->
+            <p class="text-base sm:text-lg text-forest/70 max-w-2xl mx-auto leading-relaxed">
+                한 코씩 실을 엮어내는 <span class="font-bold text-forest">정밀함</span>으로 금융 데이터를 읽어내고,<br>
+                스위치를 켜고 탐험하는 <span class="font-bold text-amberOrange">모험심</span>으로 최적의 UX 서비스를 설계하는 SSAFY 모험가 정소연입니다.
+            </p>
+
+            <!-- 히어로 그래픽 영역 (SVG&CSS 일러스트) -->
+            <div class="flex justify-center items-center gap-10 py-6">
+                <div class="relative w-80 h-48 bg-white/50 backdrop-blur-sm rounded-3xl border border-forest/10 p-6 shadow-xl flex justify-around items-center float-animation">
+                    <!-- 뜨개실 볼 일러스트 (SVG) -->
+                    <div class="flex flex-col items-center">
+                        <svg class="w-20 h-20 text-amberOrange" viewBox="0 0 100 100" fill="currentColor">
+                            <circle cx="50" cy="50" r="40" fill="#E28F43" />
+                            <!-- 실 패턴 데코 -->
+                            <path d="M20 50 C 35 20, 65 20, 80 50" stroke="#FBF9F1" stroke-width="3" fill="none" />
+                            <path d="M20 50 C 35 80, 65 80, 80 50" stroke="#FBF9F1" stroke-width="3" fill="none" />
+                            <path d="M50 20 C 20 35, 20 65, 50 80" stroke="#FBF9F1" stroke-width="3" fill="none" />
+                            <path d="M50 20 C 80 35, 80 65, 50 80" stroke="#FBF9F1" stroke-width="3" fill="none" />
+                            <!-- 바늘 -->
+                            <line x1="15" y1="15" x2="60" y2="60" stroke="#2B4C3F" stroke-width="4" stroke-linecap="round"/>
+                            <line x1="85" y1="15" x2="40" y2="60" stroke="#2B4C3F" stroke-width="4" stroke-linecap="round"/>
+                        </svg>
+                        <span class="text-xs font-bold text-forest mt-2">사부작 뜨개</span>
+                    </div>
+
+                    <div class="h-12 w-px bg-forest/20"></div>
+
+                    <!-- 닌텐도 스위치 일러스트 (CSS/SVG) -->
+                    <div class="flex flex-col items-center">
+                        <div class="relative w-28 h-14 bg-forest rounded-lg flex items-center p-1 shadow-md border border-forest/50">
+                            <!-- 왼쪽 조이콘 -->
+                            <div class="w-1/4 h-full bg-softMint rounded-l-md flex flex-col justify-around items-center py-1">
+                                <div class="w-2 h-2 bg-forest rounded-full"></div>
+                                <div class="grid grid-cols-2 gap-0.5">
+                                    <div class="w-1 h-1 bg-forest rounded-full"></div>
+                                    <div class="w-1 h-1 bg-forest rounded-full"></div>
+                                </div>
+                            </div>
+                            <!-- 중앙 화면 -->
+                            <div class="w-2/4 h-full bg-darkForest flex items-center justify-center">
+                                <span class="text-[8px] text-amberOrange font-bold tracking-widest animate-pulse">DATA</span>
+                            </div>
+                            <!-- 오른쪽 조이콘 -->
+                            <div class="w-1/4 h-full bg-amberOrange rounded-r-md flex flex-col justify-around items-center py-1 joycon-glow">
+                                <div class="grid grid-cols-2 gap-0.5">
+                                    <div class="w-1 h-1 bg-vanilla rounded-full"></div>
+                                    <div class="w-1 h-1 bg-vanilla rounded-full"></div>
+                                </div>
+                                <div class="w-2 h-2 bg-vanilla rounded-full"></div>
+                            </div>
+                        </div>
+                        <span class="text-xs font-bold text-forest mt-3">신나는 분석</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 스크롤 다운 가이드 -->
+            <div class="pt-4">
+                <a href="#intro" class="text-forest/60 hover:text-amberOrange text-sm transition-colors duration-300 inline-flex flex-col items-center gap-1">
+                    <span>정소연의 아지트 속으로 똑똑, 들어가기</span>
+                    <i class="fa-solid fa-chevron-down animate-bounce mt-1"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. Intro Section (소개 - SSAFY 맞춤 프로필) -->
+    <section id="intro" class="bg-softMint py-20 px-6 border-y border-forest/10">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-amberOrange text-sm font-bold tracking-widest uppercase">ABOUT ME</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-2 font-title text-forest">손끝에서 빚어지는 정교한 흐름</h2>
+                <div class="w-16 h-1 bg-amberOrange mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- 프로필 카드 및 아이덴티티 설명 -->
+            <div class="bg-vanilla rounded-3xl p-8 md:p-12 shadow-xl border border-forest/10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- 왼쪽 영역: 프로필 및 스킬 스택 -->
+                <div class="lg:col-span-5 flex flex-col items-center text-center bg-white/60 p-6 rounded-2xl border border-forest/5 shadow-inner">
+                    <div class="relative w-36 h-36 rounded-full bg-softMint border-4 border-forest flex items-center justify-center text-6xl shadow-md mb-4 overflow-hidden">
+                        👩‍💻
+                    </div>
+                    <h3 class="text-2xl font-bold font-title text-forest">정소연</h3>
+                    <p class="text-sm text-forest/70 font-semibold mt-1">데이터 분석가 ∙ 디지털 서비스 기획자</p>
+                    
+                    <!-- SSAFY 및 MBTI 배지 -->
+                    <div class="flex gap-2 mt-3">
+                        <span class="bg-forest text-vanilla text-[11px] px-2.5 py-0.5 rounded-full font-bold">SSAFY 12th</span>
+                        <span class="bg-amberOrange text-white text-[11px] px-2.5 py-0.5 rounded-full font-bold">ISTP (만능 재주꾼)</span>
+                    </div>
+
+                    <!-- 기술 스택 요약 -->
+                    <div class="w-full mt-6 pt-6 border-t border-forest/10 text-left">
+                        <span class="text-xs font-bold text-forest/50 uppercase tracking-widest block mb-3">🛠️ CORE TECH STACK</span>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center bg-vanilla p-2 rounded-lg border border-forest/5">
+                                <span class="text-xs font-bold text-forest">Python</span>
+                                <span class="text-[10px] bg-forest/10 text-forest px-2 py-0.5 rounded font-mono font-bold">EDA / Pandas</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-vanilla p-2 rounded-lg border border-forest/5">
+                                <span class="text-xs font-bold text-forest">SQL</span>
+                                <span class="text-[10px] bg-forest/10 text-forest px-2 py-0.5 rounded font-mono font-bold">Query / DB Tuning</span>
+                            </div>
+                            <div class="flex justify-between items-center bg-vanilla p-2 rounded-lg border border-forest/5">
+                                <span class="text-xs font-bold text-forest">Tableau</span>
+                                <span class="text-[10px] bg-forest/10 text-forest px-2 py-0.5 rounded font-mono font-bold">Visualization</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 오른쪽 영역: 비하인드 스토리 & 가치관 -->
+                <div class="lg:col-span-7 space-y-5">
+                    <h4 class="text-lg font-bold text-amberOrange flex items-center gap-2 font-title">
+                        <span>🌟 "손끝으로 조립하고 검증하는 것을 사랑합니다"</span>
+                    </h4>
+                    
+                    <div class="text-forest/80 leading-relaxed text-sm sm:text-base space-y-4">
+                        <p>
+                            안녕하세요! 데이터 속에서 사용자의 잠재적 통증 포인트(Pain Point)를 찾아내고, 이를 메우는 정교한 디지털 서비스를 기획하고 싶은 <strong>정소연</strong>입니다.
+                        </p>
+                        <p>
+                            코바늘 도안은 조건문과 반복문이 유기적으로 설계된 세상에서 가장 오래된 <strong>아크릴화된 알고리즘</strong>입니다. 단 한 코만 밀려도 전체 옷감이 뒤틀려버리는 뜨개질의 치밀함은, 1원 단위의 무결성이 생명인 <span class="text-forest font-bold underline decoration-wavy decoration-1">금융 데이터 분석</span>을 향한 제 정밀함과 닿아있습니다.
+                        </p>
+                        <p>
+                            또한, 제가 가장 사랑하는 게임인 <em>'슈퍼 마리오 메이커 2'</em>는 단순 오락이 아닌 저의 첫 <strong>UX 여정 지도(User Journey Map)</strong>였습니다. 플레이어가 어떤 구간에서 흥미를 잃고 이탈하는지 데이터를 기반으로 예측하며 최적의 맵 동선을 구현하곤 했습니다.
+                        </p>
+                        <p>
+                            이번 SSAFY를 통해 동료들과 함께 <strong>실제로 기민하게 구동되는 웹 서비스</strong>를 탄생시키고, 감에 의존한 기획 대신 철저히 데이터 지표에 기반한 <span class="text-amberOrange font-bold">A/B 테스트</span>와 Growth 정밀 조정을 완수해 내는 핵심 기획자/분석가로 도약하고자 합니다.
+                        </p>
+                    </div>
+
+                    <!-- 동료 구인 매력 어필 -->
+                    <div class="bg-forest/5 p-4 rounded-xl border-l-4 border-forest text-xs text-forest/80 space-y-1">
+                        <p class="font-bold">🤝 이런 프로젝트 팀 빌딩을 기다립니다!</p>
+                        <p>∙ 타겟 사용자의 실 데이터 수집 및 Tableau 분석을 연계한 웹서비스 기획이 필요할 때</p>
+                        <p>∙ 정량적인 A/B 테스트 설계와 데이터 시각화를 프로젝트에 도입해보고 싶을 때</p>
+                        <p>∙ 묵묵히 본인의 파트를 깔끔히 디버깅해내는 ISTP의 정밀한 개발/기획 동료가 필요할 때</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Key Points Section (매력 포인트 카드 3개) -->
+    <section id="features" class="py-20 px-6 bg-vanilla">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-amberOrange text-sm font-bold tracking-widest uppercase">KEY POINTS</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-2 font-title text-forest">취미와 역량의 융합 패치워크</h2>
+                <p class="text-forest/70 text-sm mt-2">좋아하는 일들을 통해 다듬어진 저만의 무기 3가지입니다.</p>
+                <div class="w-16 h-1 bg-amberOrange mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- 카드 레이아웃 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 포인트 1 -->
+                <div class="bg-white hover:bg-softMint/30 p-8 rounded-3xl border border-forest/10 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-softMint rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm">
+                            🎨
+                        </div>
+                        <h3 class="text-xl font-bold text-forest mb-4 font-title tracking-wide">1. 상상이 현실이 되는 귀여움</h3>
+                        <p class="text-forest/70 text-sm leading-relaxed">
+                            닌텐도 게임 캐릭터들을 아크릴 털실로 정밀하게 역합성해 내는 덕업일치의 열정. 아이디어를 현실 속 실체(Product)로 깔끔하게 떨어뜨리는 실천력의 기반입니다.
+                        </p>
+                    </div>
+                    <span class="text-xs font-bold text-amberOrange mt-6 tracking-widest uppercase block">Creativity & Productizing</span>
+                </div>
+
+                <!-- 포인트 2 -->
+                <div class="bg-white hover:bg-softMint/30 p-8 rounded-3xl border border-forest/10 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-softMint rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm">
+                            ⏳
+                        </div>
+                        <h3 class="text-xl font-bold text-forest mb-4 font-title tracking-wide">2. 느린 일상과 빠른 모험의 공존</h3>
+                        <p class="text-forest/70 text-sm leading-relaxed">
+                            수만 줄의 복잡한 원천 금융 데이터 속 정제(Slow) 과정과, 인사이트를 낚아채어 서비스 기획 아이디어로 빠르게 승화(Fast)시키는 기획 템포의 완벽한 밸런스를 가집니다.
+                        </p>
+                    </div>
+                    <span class="text-xs font-bold text-amberOrange mt-6 tracking-widest uppercase block">Data Preprocessing & Fast Execution</span>
+                </div>
+
+                <!-- 포인트 3 -->
+                <div class="bg-white hover:bg-softMint/30 p-8 rounded-3xl border border-forest/10 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 bg-softMint rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-sm">
+                            ☕
+                        </div>
+                        <h3 class="text-xl font-bold text-forest mb-4 font-title tracking-wide">3. 나만의 속도로 걷는 모험가</h3>
+                        <p class="text-forest/70 text-sm leading-relaxed">
+                            단순 트렌드 카피캣에서 벗어나, 데이터 증적과 논리성에 입각해 제품과 가치를 판단하는 ISTP. 팀 프로젝트 시 조용하지만 가장 단단한 개발 나침반이 됩니다.
+                        </p>
+                    </div>
+                    <span class="text-xs font-bold text-amberOrange mt-6 tracking-widest uppercase block">ISTP Logic-Driven Builder</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Storytelling Flow Section -->
+    <section id="storyline" class="py-20 px-6 bg-softMint/30 border-t border-forest/10">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-amberOrange text-sm font-bold tracking-widest uppercase">STORY ROADMAP</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-2 font-title text-forest">모험가의 비밀 이야기 도로맵</h2>
+                <p class="text-forest/70 text-sm mt-2">이 방에서 우리가 함께 지나갈 5가지의 즐거운 마일스톤입니다.</p>
+                <div class="w-16 h-1 bg-amberOrange mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- 타임라인 구조 -->
+            <div class="relative border-l-2 border-forest/20 ml-4 md:ml-32 space-y-12 pb-4">
+                
+                <!-- 단계 1 -->
+                <div class="relative pl-8 md:pl-12">
+                    <span class="absolute -left-[17px] top-1 bg-forest text-vanilla w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shadow-md">1</span>
+                    <div class="bg-vanilla p-6 rounded-2xl border border-forest/10 shadow-sm hover:shadow-md transition-shadow">
+                        <span class="text-xs font-semibold text-amberOrange tracking-wide block mb-1">INTRO</span>
+                        <h4 class="text-lg font-bold text-forest mb-2">아늑한 아지트 문 열며</h4>
+                        <p class="text-sm text-forest/70 leading-relaxed">
+                            따뜻하게 내려앉은 조명 밑, 포실한 털실 뭉치와 충전 중인 닌텐도 스위치가 다정히 주인을 기다리는 따스하고 다락방 같은 입구 공간입니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 단계 2 -->
+                <div class="relative pl-8 md:pl-12">
+                    <span class="absolute -left-[17px] top-1 bg-forest text-vanilla w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shadow-md">2</span>
+                    <div class="bg-vanilla p-6 rounded-2xl border border-forest/10 shadow-sm hover:shadow-md transition-shadow">
+                        <span class="text-xs font-semibold text-amberOrange tracking-wide block mb-1">CORE</span>
+                        <h4 class="text-lg font-bold text-forest mb-2">손끝에서 싹트는 정체성</h4>
+                        <p class="text-sm text-forest/70 leading-relaxed">
+                            데이터 기반 금융 분석과 고유의 UX 디자인적 상상력을 하나의 그릇에 묶어내는 정소연의 정교한 기획 아이덴티티를 탐독합니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 단계 3 -->
+                <div class="relative pl-8 md:pl-12">
+                    <span class="absolute -left-[17px] top-1 bg-forest text-vanilla w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shadow-md">3</span>
+                    <div class="bg-vanilla p-6 rounded-2xl border border-forest/10 shadow-sm hover:shadow-md transition-shadow">
+                        <span class="text-xs font-semibold text-amberOrange tracking-wide block mb-1">SLOW TIME</span>
+                        <h4 class="text-lg font-bold text-forest mb-2">사부작사부작 뜨개 소품실</h4>
+                        <p class="text-sm text-forest/70 leading-relaxed">
+                            한 코 한 코 정성스레 만든 옷과 귀여운 실 인형들의 창작 아카이브를 둘러보며, 고유의 알고리즘을 현실에 구체화한 작품을 감상합니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 단계 4 -->
+                <div class="relative pl-8 md:pl-12">
+                    <span class="absolute -left-[17px] top-1 bg-forest text-vanilla w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shadow-md">4</span>
+                    <div class="bg-vanilla p-6 rounded-2xl border border-forest/10 shadow-sm hover:shadow-md transition-shadow">
+                        <span class="text-xs font-semibold text-amberOrange tracking-wide block mb-1">FAST TIME</span>
+                        <h4 class="text-lg font-bold text-forest mb-2">두근두근 닌텐도 모험 아일랜드</h4>
+                        <p class="text-sm text-forest/70 leading-relaxed">
+                            스위치 속 모험의 스크린샷과 최애작 추천 목록을 통해, 사용자가 감동과 재미를 온몸으로 겪는 훌륭한 게임 UX의 정수를 연구합니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 단계 5 -->
+                <div class="relative pl-8 md:pl-12">
+                    <span class="absolute -left-[17px] top-1 bg-amberOrange text-white w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shadow-md">5</span>
+                    <div class="bg-vanilla p-6 rounded-2xl border border-amberOrange/30 shadow-md">
+                        <span class="text-xs font-semibold text-amberOrange tracking-wide block mb-1">OUTRO</span>
+                        <h4 class="text-lg font-bold text-forest mb-2">당신을 맞이할 다정다감 연결망</h4>
+                        <p class="text-sm text-forest/70 leading-relaxed">
+                            나와 꼭 닮은 소박한 행복을 찾아 헤매는 방문객 여러분과 함께 정담을 나누고, 소소한 생각들을 피드백 형태로 주고받는 커뮤니티적 소통 허브입니다.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4.5 Recommended Games Section (추천 게임 도감) -->
+    <section id="games" class="py-20 px-6 bg-vanilla border-t border-forest/10">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-amberOrange text-sm font-bold tracking-widest uppercase">MY FAVORITE GAMES</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-2 font-title text-forest">모험가의 닌텐도 추천 게임 도감</h2>
+                <p class="text-forest/70 text-sm mt-2">제 손끝을 짜릿하게 자극했던 보석 같은 닌텐도 스위치 타이틀 10선입니다.</p>
+                <div class="w-16 h-1 bg-amberOrange mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- 게임 카드 그리드 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- 게임 1 -->
+                <div class="bg-white hover:bg-softMint/20 p-6 rounded-3xl border border-forest/10 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-3xl">⚔️</span>
+                            <span class="text-xs bg-amberOrange/20 text-amberOrange px-2.5 py-1 rounded-full font-bold">최애작 👑</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-forest font-title mb-1">젤다의 전설: 왕국의 눈물</h3>
+                        <div class="flex gap-1.5 flex-wrap my-2">
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#오픈월드</span>
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#울트라핸드</span>
+                        </div>
+                        <p class="text-xs text-forest/70 leading-relaxed mt-2">
+                            하늘과 대지, 지저를 넘나드는 모험의 끝판왕! 내 상상력 그대로 비행기나 탈것을 직접 만들어 모험하는 손맛이 뜨개질의 짜임새와 닮아있어요.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-forest/5 flex justify-between items-center text-xs text-forest/50">
+                        <span>추천도</span>
+                        <span class="text-amberOrange">⭐⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <!-- 게임 2 -->
+                <div class="bg-white hover:bg-softMint/20 p-6 rounded-3xl border border-forest/10 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-3xl">🛡️</span>
+                            <span class="text-xs bg-forest/10 text-forest/80 px-2.5 py-1 rounded-full font-bold">모험의 시작</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-forest font-title mb-1">젤다의 전설: 야생의 숨결</h3>
+                        <div class="flex gap-1.5 flex-wrap my-2">
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#힐링탐험</span>
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#자유도</span>
+                        </div>
+                        <p class="text-xs text-forest/70 leading-relaxed mt-2">
+                            말을 타고 하이랄의 푸른 초원을 달리며 아름다운 석양을 바라볼 때의 그 감동은 언제나 제 마음에 따스한 온기를 전해줍니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-forest/5 flex justify-between items-center text-xs text-forest/50">
+                        <span>추천도</span>
+                        <span class="text-amberOrange">⭐⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <!-- 게임 3 -->
+                <div class="bg-white hover:bg-softMint/20 p-6 rounded-3xl border border-forest/10 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-3xl">🐒</span>
+                            <span class="text-xs bg-amberOrange/20 text-amberOrange px-2.5 py-1 rounded-full font-bold">리듬중독 🎶</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-forest font-title mb-1">리듬천국</h3>
+                        <div class="flex gap-1.5 flex-wrap my-2">
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#박자감</span>
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#손끝자극</span>
+                        </div>
+                        <p class="text-xs text-forest/70 leading-relaxed mt-2">
+                            쿵-짝-짝! 단순하지만 중독성 강한 멜로디에 맞춰 손가락을 튕기다 보면 어느새 스트레스가 싹 풀리는 요즘 저의 영혼의 동반자 게임입니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-forest/5 flex justify-between items-center text-xs text-forest/50">
+                        <span>추천도</span>
+                        <span class="text-amberOrange">⭐⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <!-- 게임 4 -->
+                <div class="bg-white hover:bg-softMint/20 p-6 rounded-3xl border border-forest/10 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-3xl">🏕️</span>
+                            <span class="text-xs bg-forest/10 text-forest/80 px-2.5 py-1 rounded-full font-bold">인생힐링</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-forest font-title mb-1">모여봐요 동물의 숲</h3>
+                        <div class="flex gap-1.5 flex-wrap my-2">
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#슬로우라이프</span>
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#DIY</span>
+                        </div>
+                        <p class="text-xs text-forest/70 leading-relaxed mt-2">
+                            뜨개질의 느긋한 템포와 가장 완벽하게 조화를 이루는 게임. 나만의 작은 섬을 가꾸며 다정한 동물 이웃들과 도란도란 정을 나누는 따스한 공간.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-forest/5 flex justify-between items-center text-xs text-forest/50">
+                        <span>추천도</span>
+                        <span class="text-amberOrange">⭐⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <!-- 게임 5 -->
+                <div class="bg-white hover:bg-softMint/20 p-6 rounded-3xl border border-forest/10 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-3xl">🎩</span>
+                            <span class="text-xs bg-forest/10 text-forest/80 px-2.5 py-1 rounded-full font-bold">창의력 폭발</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-forest font-title mb-1">슈퍼 마리오 오디세이</h3>
+                        <div class="flex gap-1.5 flex-wrap my-2">
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#3D플랫포머</span>
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#여행</span>
+                        </div>
+                        <p class="text-xs text-forest/70 leading-relaxed mt-2">
+                            모자 '캐피'를 던져 몬스터나 사물로 캡처(변신)하며 누비는 좌충우돌 세계 여행! 상상력 가득한 맵과 아기자기한 이스터에그가 가득해요.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-forest/5 flex justify-between items-center text-xs text-forest/50">
+                        <span>추천도</span>
+                        <span class="text-amberOrange">⭐⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <!-- 게임 6 -->
+                <div class="bg-white hover:bg-softMint/20 p-6 rounded-3xl border border-forest/10 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-3xl">🧱</span>
+                            <span class="text-xs bg-forest/10 text-forest/80 px-2.5 py-1 rounded-full font-bold">크래프트</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-forest font-title mb-1">슈퍼 마리오 메이커 2</h3>
+                        <div class="flex gap-1.5 flex-wrap my-2">
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#맵메이킹</span>
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#창작</span>
+                        </div>
+                        <p class="text-xs text-forest/70 leading-relaxed mt-2">
+                            나만의 룰이 담긴 고유의 스테이지를 코딩하듯 조립해 만들고 전 세계 사람들과 공유하는 재미! 제 '창작 욕구'를 마구마구 채워주는 소중한 놀이터입니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-forest/5 flex justify-between items-center text-xs text-forest/50">
+                        <span>추천도</span>
+                        <span class="text-amberOrange">⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <!-- 게임 7 -->
+                <div class="bg-white hover:bg-softMint/20 p-6 rounded-3xl border border-forest/10 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-3xl">⭐</span>
+                            <span class="text-xs bg-forest/10 text-forest/80 px-2.5 py-1 rounded-full font-bold">사랑스러움</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-forest font-title mb-1">별의 커비</h3>
+                        <div class="flex gap-1.5 flex-wrap my-2">
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#동화감성</span>
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#귀여움</span>
+                        </div>
+                        <p class="text-xs text-forest/70 leading-relaxed mt-2">
+                            무엇이든 뇸뇸 먹고 변신하는 핑크빛 동글이 커비! 너무 귀여워서 코바늘 털실 인형으로 가장 많이 복제해서 만들고 싶어지는 비주얼 1위 게임입니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-forest/5 flex justify-between items-center text-xs text-forest/50">
+                        <span>추천도</span>
+                        <span class="text-amberOrange">⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <!-- 게임 8 -->
+                <div class="bg-white hover:bg-softMint/20 p-6 rounded-3xl border border-forest/10 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-3xl">🐱</span>
+                            <span class="text-xs bg-forest/10 text-forest/80 px-2.5 py-1 rounded-full font-bold">질주쾌감</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-forest font-title mb-1">슈퍼 마리오 3D월드+ 퓨리월드</h3>
+                        <div class="flex gap-1.5 flex-wrap my-2">
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#고양이마리오</span>
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#액션</span>
+                        </div>
+                        <p class="text-xs text-forest/70 leading-relaxed mt-2">
+                            귀여운 고양이 슈트를 입고 벽을 타는 아기자기한 매력부터, 거대 쿠파에 맞서 우당탕탕 난투극을 벌이는 퓨리월드까지 1석 2조의 알찬 패키지!
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-forest/5 flex justify-between items-center text-xs text-forest/50">
+                        <span>추천도</span>
+                        <span class="text-amberOrange">⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <!-- 게임 9 -->
+                <div class="bg-white hover:bg-softMint/20 p-6 rounded-3xl border border-forest/10 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-3xl">🎪</span>
+                            <span class="text-xs bg-forest/10 text-forest/80 px-2.5 py-1 rounded-full font-bold">축제개막</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-forest font-title mb-1">슈퍼 마리오 파티 잼버리</h3>
+                        <div class="flex gap-1.5 flex-wrap my-2">
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#미니게임</span>
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#다인플레이</span>
+                        </div>
+                        <p class="text-xs text-forest/70 leading-relaxed mt-2">
+                            친구들이 저희 아지트에 놀러 올 때 필수 지참 타이틀! 수많은 아기자기 미니게임 속에서 주사위를 굴리며 시끌벅적 웃음꽃을 피우기 가장 좋습니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-forest/5 flex justify-between items-center text-xs text-forest/50">
+                        <span>추천도</span>
+                        <span class="text-amberOrange">⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+
+                <!-- 게임 10 -->
+                <div class="bg-white hover:bg-softMint/20 p-6 rounded-3xl border border-forest/10 shadow-md hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-3xl">🍄</span>
+                            <span class="text-xs bg-forest/10 text-forest/80 px-2.5 py-1 rounded-full font-bold">클래식</span>
+                        </div>
+                        <h3 class="font-bold text-lg text-forest font-title mb-1">뉴 슈퍼 마리오 브라더스 U 디럭스</h3>
+                        <div class="flex gap-1.5 flex-wrap my-2">
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#횡스크롤</span>
+                            <span class="text-[10px] bg-forest/5 text-forest/70 px-2 py-0.5 rounded-md font-semibold">#추억의손맛</span>
+                        </div>
+                        <p class="text-xs text-forest/70 leading-relaxed mt-2">
+                            어릴 적 패밀리 컴퓨터 감성을 가장 현대적이고 깨끗하게 복원한 2D 마리오의 명작. 직관적이면서도 은근히 도전 욕구를 불태우는 맵들이 매력적이에요.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-forest/5 flex justify-between items-center text-xs text-forest/50">
+                        <span>추천도</span>
+                        <span class="text-amberOrange">⭐⭐⭐⭐</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 💡 [A/B Test Section: 정소연의 시그니처 아이디어] -->
+    <section id="abtest" class="py-20 px-6 bg-softMint border-y border-forest/10">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-amberOrange text-sm font-bold tracking-widest uppercase">INTERACTIVE EXPERIMENT</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-2 font-title text-forest">소연의 실시간 미니 A/B 테스트</h2>
+                <p class="text-forest/70 text-sm mt-2">사용자 데이터 기반으로 화면을 지속 개선하는 서비스 기획자의 마인드셋을 체험해 보세요!</p>
+                <div class="w-16 h-1 bg-amberOrange mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- A/B 테스트 모의 패널 -->
+            <div class="bg-vanilla p-8 rounded-3xl border border-forest/15 shadow-xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                
+                <!-- 왼쪽 설명 영역 -->
+                <div class="md:col-span-5 space-y-4">
+                    <div class="bg-forest text-vanilla text-xs font-bold px-3 py-1 rounded-md w-fit">실시간 시뮬레이션</div>
+                    <h3 class="text-lg font-bold text-forest">어떤 색의 버튼이 더 끌릴까요?</h3>
+                    <p class="text-xs text-forest/70 leading-relaxed">
+                        화면 하단의 두 가지 실험 대안(A안, B안) 중 마음에 드는 버튼을 클릭해 주세요. 지표 데이터가 실시간으로 쌓이고 누적 클릭률과 전환 지수가 계산되어 시각화됩니다!
+                    </p>
+                    
+                    <!-- 임시 대시보드 스탯 -->
+                    <div class="bg-white/80 p-4 rounded-xl border border-forest/10 space-y-2">
+                        <div class="flex justify-between text-xs text-forest/70">
+                            <span>A안 (Cozy Forest) 클릭:</span>
+                            <span id="clickACount" class="font-bold text-forest">24</span>
+                        </div>
+                        <div class="flex justify-between text-xs text-forest/70">
+                            <span>B안 (Active Orange) 클릭:</span>
+                            <span id="clickBCount" class="font-bold text-amberOrange">32</span>
+                        </div>
+                        <div class="h-2 w-full bg-forest/10 rounded-full overflow-hidden flex">
+                            <div id="barA" class="bg-forest h-full" style="width: 42.8%"></div>
+                            <div id="barB" class="bg-amberOrange h-full" style="width: 57.2%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 오른쪽 실제 버튼 선택 테마 파트 -->
+                <div class="md:col-span-7 bg-white p-6 rounded-2xl border border-forest/5 flex flex-col items-center justify-center space-y-8 min-h-[220px]">
+                    <span class="text-sm font-bold text-forest/60">👇 당신의 시각적 선호도를 클릭하여 피드백하세요! 👇</span>
+                    
+                    <div class="flex flex-col sm:flex-row gap-6 w-full justify-center">
+                        <!-- 대안 A 버튼 -->
+                        <div class="text-center flex-1">
+                            <span class="text-[11px] font-bold text-forest uppercase tracking-widest block mb-2">Alternative A</span>
+                            <button onclick="registerClick('A')" class="w-full bg-forest text-vanilla hover:bg-darkForest font-bold py-3.5 px-6 rounded-xl transition-all shadow-md transform active:scale-95 text-sm">
+                                🧶 숲속의 다락방 노크하기
+                            </button>
+                        </div>
+
+                        <!-- 대안 B 버튼 -->
+                        <div class="text-center flex-1">
+                            <span class="text-[11px] font-bold text-amberOrange uppercase tracking-widest block mb-2">Alternative B</span>
+                            <button onclick="registerClick('B')" class="w-full bg-amberOrange text-white hover:bg-orange-600 font-bold py-3.5 px-6 rounded-xl transition-all shadow-md transform active:scale-95 text-sm">
+                                🎮 하이랄 대륙 질주하기
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 실시간 알림 보드 -->
+                    <div id="abMessage" class="text-xs text-forest/80 bg-softMint/40 px-4 py-2 rounded-lg border border-forest/10 italic">
+                        누적 데이터를 바탕으로 최적의 UX 솔루션을 계산하고 있습니다.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Gallery Section (프로그램 및 아카이브 전시회 - 6장 그리드) -->
+    <section id="gallery" class="py-20 px-6 bg-vanilla">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="text-amberOrange text-sm font-bold tracking-widest uppercase">GALLERY ARCHIVE</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-2 font-title text-forest">소담한 작품 및 게임 아카이빙</h2>
+                <p class="text-forest/70 text-sm mt-2">나의 뜨개 가디건, 기워 낸 인형, 그리고 닌텐도 게임 스크린샷들의 순간순간들</p>
+                <div class="w-16 h-1 bg-amberOrange mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- 6장 카드 플레이스홀더 (우선 회색 플레이스홀더에 세련된 디자인 및 오버레이 적용) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- 갤러리 1 -->
+                <div class="group relative overflow-hidden rounded-2xl border border-forest/10 bg-gray-200 aspect-[4/3] shadow-md transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-forest to-forest/30 opacity-70 group-hover:opacity-60 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 text-white z-10">
+                        <span class="text-xs bg-amberOrange text-white px-2 py-0.5 rounded-md w-fit mb-2">🧶 뜨개질</span>
+                        <h4 class="font-bold text-lg font-title">첫눈에 사랑에 빠진 모헤어 가디건</h4>
+                        <p class="text-xs text-white/80 mt-1">대바늘 ∙ 차콜 그레이 ∙ 2026 완성</p>
+                    </div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 text-6xl group-hover:scale-110 transition-transform duration-500">
+                        🧥
+                    </div>
+                </div>
+
+                <!-- 갤러리 2 -->
+                <div class="group relative overflow-hidden rounded-2xl border border-forest/10 bg-gray-200 aspect-[4/3] shadow-md transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-forest to-forest/30 opacity-70 group-hover:opacity-60 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 text-white z-10">
+                        <span class="text-xs bg-amberOrange text-white px-2 py-0.5 rounded-md w-fit mb-2">🧶 코바늘</span>
+                        <h4 class="font-bold text-lg font-title">동글동글 리듬천국 원숭이 코바늘 인형</h4>
+                        <p class="text-xs text-white/80 mt-1">코바늘 ∙ 아크릴실 ∙ 덕업일치</p>
+                    </div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 text-6xl group-hover:scale-110 transition-transform duration-500">
+                        🐒
+                    </div>
+                </div>
+
+                <!-- 갤러리 3 -->
+                <div class="group relative overflow-hidden rounded-2xl border border-forest/10 bg-gray-200 aspect-[4/3] shadow-md transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-forest to-forest/30 opacity-70 group-hover:opacity-60 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 text-white z-10">
+                        <span class="text-xs bg-forest text-white px-2 py-0.5 rounded-md w-fit mb-2">🎮 닌텐도</span>
+                        <h4 class="font-bold text-lg font-title">젤다 야숨: 하이랄 대륙 석양의 낭만</h4>
+                        <p class="text-xs text-white/80 mt-1">Nintendo Switch ∙ 명장면 스크린샷</p>
+                    </div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 text-6xl group-hover:scale-110 transition-transform duration-500">
+                        🌅
+                    </div>
+                </div>
+
+                <!-- 갤러리 4 -->
+                <div class="group relative overflow-hidden rounded-2xl border border-forest/10 bg-gray-200 aspect-[4/3] shadow-md transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-forest to-forest/30 opacity-70 group-hover:opacity-60 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 text-white z-10">
+                        <span class="text-xs bg-forest text-white px-2 py-0.5 rounded-md w-fit mb-2">🎮 닌텐도</span>
+                        <h4 class="font-bold text-lg font-title">리듬천국 올 골드 메달 도전 일지</h4>
+                        <p class="text-xs text-white/80 mt-1">박자감 폭발 ∙ 요즘 최애 중독 게임</p>
+                    </div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 text-6xl group-hover:scale-110 transition-transform duration-500">
+                        💿
+                    </div>
+                </div>
+
+                <!-- 갤러리 5 -->
+                <div class="group relative overflow-hidden rounded-2xl border border-forest/10 bg-gray-200 aspect-[4/3] shadow-md transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-forest to-forest/30 opacity-70 group-hover:opacity-60 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 text-white z-10">
+                        <span class="text-xs bg-amberOrange text-white px-2 py-0.5 rounded-md w-fit mb-2">🧶 언박싱</span>
+                        <h4 class="font-bold text-lg font-title">파스텔 톤 수입 울실 패키지 하울</h4>
+                        <p class="text-xs text-white/80 mt-1">실 냄새 솔솔 ∙ 새 가디건 기획 실</p>
+                    </div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 text-6xl group-hover:scale-110 transition-transform duration-500">
+                        📦
+                    </div>
+                </div>
+
+                <!-- 갤러리 6 -->
+                <div class="group relative overflow-hidden rounded-2xl border border-forest/10 bg-gray-200 aspect-[4/3] shadow-md transition-all duration-300">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-forest to-forest/30 opacity-70 group-hover:opacity-60 transition-opacity duration-300"></div>
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 text-white z-10">
+                        <span class="text-xs bg-forest text-white px-2 py-0.5 rounded-md w-fit mb-2">🎮 닌텐도</span>
+                        <h4 class="font-bold text-lg font-title">젤다 왕눈: 지저 세계와의 마주함</h4>
+                        <p class="text-xs text-white/80 mt-1">울트라핸드 크래프트 ∙ 모험의 기록</p>
+                    </div>
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white/20 text-6xl group-hover:scale-110 transition-transform duration-500">
+                        🛡️
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 💡 [Interactive Switch: 취미 놀이터 영역] -->
+    <section class="py-12 bg-softMint">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h3 class="text-2xl font-bold font-title text-forest mb-4">🧶 손끝 취향을 직접 다이얼해보세요 🎮</h3>
+            <p class="text-sm text-forest/70 mb-8">당신의 취미 게이지는 어디를 향하고 있나요? 좌우로 조절해보세요!</p>
+            
+            <div class="bg-vanilla p-8 rounded-3xl border border-forest/15 shadow-md flex flex-col items-center gap-6">
+                <div class="flex items-center gap-4 w-full max-w-lg">
+                    <span class="text-3xl">🧶 뜨개질</span>
+                    <input type="range" id="hobbySlider" min="0" max="100" value="50" oninput="adjustHobbyMix(this.value)" class="flex-grow accent-forest h-2 rounded-lg cursor-pointer bg-forest/15">
+                    <span class="text-3xl">🎮 닌텐도</span>
+                </div>
+                
+                <div id="dynamicMessage" class="font-bold text-forest text-lg px-6 py-3 rounded-full bg-softMint/50 border border-forest/10">
+                    "뜨개질 50% & 게임 50% - 일상의 완벽한 속도 균형!"
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CTA / Guestbook Section (소통 및 어떤 기능 추천) -->
+    <section id="guestbook" class="py-20 px-6 bg-vanilla border-t border-forest/10">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-12">
+                <span class="text-amberOrange text-sm font-bold tracking-widest uppercase">GUESTBOOK</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-2 font-title text-forest">어떤 기능이 더 들어오면 좋을까요?</h2>
+                <p class="text-forest/70 text-sm mt-2">이 아지트에 추가하면 좋을 당신의 번뜩이는 아이디어를 남겨주세요!</p>
+                <div class="w-16 h-1 bg-amberOrange mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- 소통 입력 카드 -->
+            <div class="bg-white p-8 rounded-3xl border border-forest/10 shadow-xl space-y-6">
+                <form id="recommendForm" onsubmit="addRecommend(event)" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-forest/70 mb-1.5" for="writer">닉네임 / 소통명</label>
+                            <input type="text" id="writer" required placeholder="예: SSAFY동기원숭이" class="w-full bg-vanilla px-4 py-2.5 rounded-xl border border-forest/10 focus:outline-none focus:ring-2 focus:ring-amberOrange text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-forest/70 mb-1.5" for="category">추천할 관심 분류</label>
+                            <select id="category" class="w-full bg-vanilla px-4 py-2.5 rounded-xl border border-forest/10 focus:outline-none focus:ring-2 focus:ring-amberOrange text-sm">
+                                <option value="뜨개공감">🧶 뜨개질 관련 기능</option>
+                                <option value="게임공감">🎮 닌텐도 관련 기능</option>
+                                <option value="데이터협업">📊 데이터/기획 협업 제안</option>
+                                <option value="기타의견">💡 기타 신기한 기능</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-forest/70 mb-1.5" for="content">추천 기능 및 메시지</label>
+                        <textarea id="content" required rows="3" placeholder="예: '데이터 연계 금융 시나리오 분석 대시보드를 Tableau로 같이 임베드해서 기획해 보면 어떨까요?' 등 제안도 환영해요!" class="w-full bg-vanilla px-4 py-3 rounded-xl border border-forest/10 focus:outline-none focus:ring-2 focus:ring-amberOrange text-sm"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-forest hover:bg-amberOrange text-vanilla hover:text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 shadow-md">
+                        ✨ 다정한 아이디어 남기기
+                    </button>
+                </form>
+
+                <!-- 실시간 추천/메시지 피드 목록 -->
+                <div class="pt-6 border-t border-forest/10 space-y-4">
+                    <h4 class="text-sm font-bold text-forest flex items-center gap-2">
+                        <span>💬 우리들의 취미 소다방</span>
+                        <span id="commentCount" class="bg-softMint text-forest text-xs px-2.5 py-0.5 rounded-full font-bold">3</span>
+                    </h4>
+                    
+                    <div id="commentList" class="space-y-3 max-h-80 overflow-y-auto pr-2">
+                        <!-- 고정 및 예시 추천 코멘트 1 -->
+                        <div class="bg-softMint/30 p-4 rounded-xl border border-forest/5 flex flex-col justify-between">
+                            <p class="text-xs text-forest/50 font-semibold mb-1 flex justify-between">
+                                <span>📊 [데이터협업] 금융데이터리서처</span>
+                                <span>2026-07-13 11:21</span>
+                            </p>
+                            <p class="text-sm text-forest/80">
+                                핀테크 관련 기획 동료를 구하고 있었는데, 뜨개 도안과 금융 데이터를 매핑하여 설명하시는 역량에 깊은 인상을 받았습니다. 다음 자율 프로젝트에서 금융 데이터 파이프라인 설계 같이하고 싶어요!
+                            </p>
+                        </div>
+
+                        <!-- 예시 코멘트 2 -->
+                        <div class="bg-softMint/30 p-4 rounded-xl border border-forest/5 flex flex-col justify-between">
+                            <p class="text-xs text-forest/50 font-semibold mb-1 flex justify-between">
+                                <span>🎮 [게임공감] 마리오레벨기획자</span>
+                                <span>2026-07-13 10:45</span>
+                            </p>
+                            <p class="text-sm text-forest/80">
+                                마리오 메이커 맵 제작을 UX 관점에서 설명하시다니 엄청납니다! 실제 웹서비스 런칭해서 미니 A/B 테스트 돌려볼 때 마리오 리액션 모달 팝업 추가하면 기가 막힐 듯하네요.
+                            </p>
+                        </div>
+
+                        <!-- 예시 코멘트 3 -->
+                        <div class="bg-softMint/30 p-4 rounded-xl border border-forest/5 flex flex-col justify-between">
+                            <p class="text-xs text-forest/50 font-semibold mb-1 flex justify-between">
+                                <span>🧶 [뜨개공감] 뜨개질크루원</span>
+                                <span>2026-07-13 09:32</span>
+                            </p>
+                            <p class="text-sm text-forest/80">
+                                ISTP 뜨개러의 기획력은 역시 오차가 없군요...!! 가디건 도안을 파라미터(실 굵기, 어깨너비) 입력으로 가상 렌더링하는 시뮬레이터를 데이터 대시보드 형식으로 만들어도 좋겠어요.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="bg-forest py-8 px-6 text-center border-t border-forest/10">
+        <p class="text-vanilla/60 text-xs">
+            © 2026 정소연 ∙ 시간이 느리게 흐르는 뜨개와 짜릿한 모험 사이. ALL RIGHTS RESERVED.
+        </p>
+    </footer>
+
+    <!-- JavaScript 기능 구현 -->
+    <script>
+        // 뜨개 vs 게임 슬라이더 조절 시 동적 메시지 및 재미 요소 변경
+        function adjustHobbyMix(val) {
+            const dynamicMessage = document.getElementById('dynamicMessage');
+            const knittingPercent = 100 - val;
+            const gamePercent = val;
+            
+            let msg = '';
+            if (knittingPercent > 70) {
+                msg = `🧶 뜨개질 ${knittingPercent}% & 게임 ${gamePercent}% - "사부작사부작 털실 내음이 가득한 포근한 하루!"`;
+            } else if (gamePercent > 70) {
+                msg = `🎮 게임 ${gamePercent}% & 뜨개질 ${knittingPercent}% - "하이랄 대륙 구석구석을 누비는 심장 쫄깃한 모험의 날!"`;
+            } else {
+                msg = `✨ 뜨개질 ${knittingPercent}% & 게임 ${gamePercent}% - "느린 일상과 빠른 모험이 어우러진 완벽한 템포의 하루!"`;
+            }
+            dynamicMessage.textContent = msg;
+        }
+
+        // 실시간 A/B 테스트 클릭 관리 상태값 (In-memory)
+        let countA = 24;
+        let countB = 32;
+
+        function registerClick(type) {
+            const abMsg = document.getElementById('abMessage');
+            if (type === 'A') {
+                countA++;
+                document.getElementById('clickACount').textContent = countA;
+                abMsg.innerHTML = "🎯 Cozy Forest 버튼 클릭 등록 완료! 차분하고 안정된 감각의 <strong>그린 컬러 선호도</strong>가 1상승했습니다.";
+            } else {
+                countB++;
+                document.getElementById('clickBCount').textContent = countB;
+                abMsg.innerHTML = "🎯 Active Orange 버튼 클릭 등록 완료! 모험적이고 생기발랄한 <strong>오렌지 컬러 선호도</strong>가 1상승했습니다.";
+            }
+
+            // 게이지 바 업데이트 및 비율 계산
+            const total = countA + countB;
+            const percentA = ((countA / total) * 100).toFixed(1);
+            const percentB = ((countB / total) * 100).toFixed(1);
+
+            document.getElementById('barA').style.width = percentA + '%';
+            document.getElementById('barB').style.width = percentB + '%';
+        }
+
+        // 실시간 기능 추천 리스트 추가 (In-memory 추가)
+        const comments = [
+            { category: '데이터협업', writer: '금융데이터리서처', date: '2026-07-13 11:21', content: '핀테크 관련 기획 동료를 구하고 있었는데, 뜨개 도안과 금융 데이터를 매핑하여 설명하시는 역량에 깊은 인상을 받았습니다. 다음 자율 프로젝트에서 금융 데이터 파이프라인 설계 같이하고 싶어요!' },
+            { category: '게임공감', writer: '마리오레벨기획자', date: '2026-07-13 10:45', content: '마리오 메이커 맵 제작을 UX 관점에서 설명하시다니 엄청납니다! 실제 웹서비스 런칭해서 미니 A/B 테스트 돌려볼 때 마리오 리액션 모달 팝업 추가하면 기가 막힐 듯하네요.' },
+            { category: '뜨개공감', writer: '뜨개질크루원', date: '2026-07-13 09:32', content: 'ISTP 뜨개러의 기획력은 역시 오차가 없군요...!! 가디건 도안을 파라미터(실 굵기, 어깨너비) 입력으로 가상 렌더링하는 시뮬레이터를 데이터 대시보드 형식으로 만들어도 좋겠어요.' }
+        ];
+
+        function addRecommend(event) {
+            event.preventDefault();
+            const writerInput = document.getElementById('writer');
+            const catSelect = document.getElementById('category');
+            const contentInput = document.getElementById('content');
+
+            const now = new Date();
+            const timeString = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+
+            const newComment = {
+                category: catSelect.value,
+                writer: writerInput.value,
+                date: timeString,
+                content: contentInput.value
+            };
+
+            comments.unshift(newComment); // 맨 위에 삽입
+            renderComments();
+
+            // 폼 초기화
+            writerInput.value = '';
+            contentInput.value = '';
+        }
+
+        function renderComments() {
+            const listContainer = document.getElementById('commentList');
+            const commentCount = document.getElementById('commentCount');
+            
+            listContainer.innerHTML = '';
+            commentCount.textContent = comments.length;
+
+            comments.forEach(c => {
+                let catBadge = '';
+                if (c.category === '뜨개공감') catBadge = '🧶 [뜨개공감]';
+                else if (c.category === '게임공감') catBadge = '🎮 [게임공감]';
+                else if (c.category === '데이터협업') catBadge = '📊 [데이터협업]';
+                else catBadge = '💡 [기타의견]';
+
+                const block = document.createElement('div');
+                block.className = 'bg-softMint/30 p-4 rounded-xl border border-forest/5 flex flex-col justify-between';
+                block.innerHTML = `
+                    <p class="text-xs text-forest/50 font-semibold mb-1 flex justify-between">
+                        <span>${catBadge} ${c.writer}</span>
+                        <span>${c.date}</span>
+                    </p>
+                    <p class="text-sm text-forest/80">${c.content}</p>
+                `;
+                listContainer.appendChild(block);
+            });
+        }
+
+        // HTML 전체 코드를 다운로드 받는 브라우저 기능
+        function downloadSelf() {
+            const htmlContent = document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = '정소연_포트폴리오_hobby_space.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
