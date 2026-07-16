@@ -64,9 +64,23 @@
         /* 1. 기본 본문 및 공통 폰트 지정 */
         body, p, span, input, textarea, button, select {
             font-family: 'Gowun Dodum', sans-serif;
+            font-size: 16.5px;
+            line-height: 1.8; /* 줄 간격을 넓혀서 빽빽한 글도 편하게 읽히도록 설정 */
+            letter-spacing: -0.01em; /* 자간을 아주 살짝 좁혀서 가독성을 극대화 */
             background-color: var(--color-vanilla);
             color: var(--color-text-main);
             transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        
+/* 💡 여기에 아래 코드를 추가합니다 */
+        /* 카드 내부의 답답한 작은 글씨 크기 기준을 대폭 위로 끌어올림 */
+        .text-sm {
+            font-size: 1.05rem !important; /* 원래 약 14px -> 약 16.8px로 변경 */
+            line-height: 1.8 !important;   /* 줄 간격도 넉넉하게 지정 */
+        }
+        .text-xs {
+            font-size: 0.95rem !important; /* 원래 너무 깨알 같았던 12px -> 약 15.2px로 보정 */
+            line-height: 1.7 !important;
         }
 
         /* 2. 타이틀용 폰트 강제 적용 (h1 내부의 span 또한 본문체로 덮어씌워지지 않도록 명시적 우선순위 부여) */
@@ -281,7 +295,7 @@
                     
                     <div class="flex flex-wrap gap-2 mt-4 justify-center">
                         <span class="bg-forest text-vanilla text-[11px] px-2.5 py-0.5 rounded-full font-bold">🏫 산업공학과 학사</span>
-                        <span class="bg-forest text-vanilla text-[11px] px-2.5 py-0.5 rounded-full font-bold">🎓 SSAFY 12기</span>
+                        <span class="bg-forest text-vanilla text-[11px] px-2.5 py-0.5 rounded-full font-bold">🎓 SSAFY 16기</span>
                         <span class="bg-amberOrange text-white text-[11px] px-2.5 py-0.5 rounded-full font-bold">🧭 ISTP (만능재주꾼)</span>
                     </div>
 
@@ -320,7 +334,7 @@
                             제가 깊이 몰입한 <em>'슈퍼 마리오 메이커 2'</em> 역시 단순 놀이가 아니라, 사용자가 어떠한 지점에서 낙담하고 흥미를 잃어 이탈하는지 데이터를 기반으로 시뮬레이션하고 최적의 UX 맵 동선을 모델링해보는 <strong>첫 기획 실험실</strong>이었습니다.
                         </p>
                         <p>
-                            1원 단위의 무결성이 중요한 금융 도메인 기획과 분석에 산업공학의 데이터 기반 의사결정 프레임을 적용하고자 합니다. SSAFY 12기 안에서 실제 서비스의 기획부터 런칭까지 완주하고, <strong>정량적 A/B 테스트</strong>를 성공적으로 세팅하여 성장을 주도하는 '그로스 PM / 데이터 분석가'가 되겠습니다.
+                            1원 단위의 무결성이 중요한 금융 도메인 기획과 분석에 산업공학의 데이터 기반 의사결정 프레임을 적용하고자 합니다. SSAFY 안에서 실제 서비스의 기획부터 런칭까지 완주하고, <strong>정량적 A/B 테스트</strong>를 성공적으로 세팅하여 성장을 주도하는 '그로스 PM / 데이터 분석가'가 되겠습니다.
                         </p>
                     </div>
 
