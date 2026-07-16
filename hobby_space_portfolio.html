@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>시간이 느리게 흐르는 뜨개와 짜릿한 모험 사이 ∙ 정소연</title>
     
+    <!-- Tailwind CSS 로드 -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -26,10 +27,12 @@
         }
     </script>
 
+    <!-- 구글 폰트 로드 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Gowun+Dodum&family=DungGeunMo&display=swap" rel="stylesheet">
 
+    <!-- 아이콘 팩 (Font Awesome) 로드 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -132,11 +135,21 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* 전체 배경 파티클 애니메이션 */
+        .particle { position: absolute; width: 8px; height: 8px; background: #eab308; border-radius: 50%; animation: floatBg 15s infinite linear; }
+        .particle:nth-child(1) { top: 15%; left: 10%; }
+        .particle:nth-child(2) { top: 30%; left: 85%; animation-delay: 3s; }
+        .particle:nth-child(3) { top: 75%; left: 20%; animation-delay: 5s; }
+        .particle:nth-child(4) { top: 90%; left: 90%; animation-delay: 7s; }
+        .particle:nth-child(5) { top: 50%; left: 50%; animation-delay: 9s; }
+        @keyframes floatBg { 0% { transform: translateY(0); } 50% { transform: translateY(-50px); } 100% { transform: translateY(0); } }
     </style>
 </head>
 <body class="selection:bg-amberOrange selection:text-white overflow-x-hidden">
 
     <div class="fixed bottom-6 right-6 z-50 flex flex-col sm:flex-row gap-3">
+        <!-- 다크모드 퀵 토글 -->
         <button onclick="toggleDarkMode()" id="floatingThemeBtn" class="bg-cardBg text-forest hover:bg-amberOrange hover:text-white font-semibold p-4 rounded-full shadow-2xl transition-all duration-300 flex items-center justify-center transform hover:scale-105 border-2 border-forest/20">
             <i class="fa-solid fa-moon text-lg" id="floatingThemeIcon"></i>
         </button>
@@ -146,6 +159,7 @@
         </button>
     </div>
 
+    <!-- 네비게이션 헤더 바 -->
     <nav class="sticky top-0 z-40 bg-vanilla/90 backdrop-blur-md border-b border-borderMuted px-6 py-4 flex justify-between items-center">
         <a href="#" class="text-2xl font-bold text-forest tracking-wider flex items-center gap-2">
             <span class="text-3xl">🧶</span>
@@ -155,6 +169,7 @@
         <div class="hidden lg:flex gap-6 text-sm font-semibold text-textMuted">
             <a href="#intro" class="hover:text-amberOrange transition-colors">나의 소개</a>
             <a href="#features" class="hover:text-amberOrange transition-colors">매력포인트</a>
+            <a href="#career" class="hover:text-amberOrange transition-colors">프로젝트 & 경력</a>
             <a href="#storyline" class="hover:text-amberOrange transition-colors">스토리 로드맵</a>
             <a href="#games" class="hover:text-amberOrange transition-colors">추천 게임</a>
             <a href="#abtest" class="hover:text-amberOrange transition-colors">미니 A/B 테스트</a>
@@ -163,6 +178,7 @@
         </div>
         
         <div class="flex items-center gap-3">
+            <!-- 테마 전환 헤더 버튼 -->
             <button onclick="toggleDarkMode()" class="text-forest hover:text-amberOrange p-2 text-lg focus:outline-none transition-colors" title="화면 테마 변경">
                 <i class="fa-solid fa-circle-half-stroke" id="headerThemeIcon"></i>
             </button>
@@ -172,6 +188,7 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <header class="relative min-h-[90vh] flex flex-col justify-center items-center px-6 py-12 text-center overflow-hidden">
         <div class="absolute top-10 left-10 text-6xl opacity-10 select-none">🧶</div>
         <div class="absolute bottom-20 right-10 text-6xl opacity-10 select-none">🎮</div>
@@ -180,7 +197,7 @@
 
         <div class="max-w-4xl mx-auto space-y-8 z-10 reveal">
             <div class="inline-block bg-softMint text-forest text-xs font-semibold px-4 py-1.5 rounded-full border border-borderMuted tracking-wider uppercase">
-                🧶 Industrial Engineering ∙ Knitting ∙ Data ∙ UX Design 🎮
+                🧶 Industrial Engineering ∙ Knitting ∙ Data Science ∙ AI Optimization 🎮
             </div>
 
             <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-forest leading-tight tracking-wide drop-shadow-sm">
@@ -189,8 +206,8 @@
             </h1>
 
             <p class="text-base sm:text-lg text-textMuted max-w-2xl mx-auto leading-relaxed">
-                한 코씩 실을 엮어내는 <span class="font-bold text-forest">정밀함</span>으로 금융 데이터를 세심하게 파헤치고,<br>
-                스위치를 켜고 탐험하는 <span class="font-bold text-amberOrange">모험심</span>으로 최적의 UX 솔루션을 기획하는 SSAFY 산업공학도 정소연입니다.
+                한 코씩 실을 엮어내는 <span class="font-bold text-forest">정밀함</span>으로 데이터와 프로세스 최적화를 파헤치고,<br>
+                스위치를 켜고 탐험하는 <span class="font-bold text-amberOrange">모험심</span>으로 세상의 문제를 기획하고 해결하는 산업공학도 정소연입니다.
             </p>
 
             <div class="flex justify-center items-center gap-10 py-6">
@@ -244,6 +261,7 @@
         </div>
     </header>
 
+    <!-- Intro Section (소개) -->
     <section id="intro" class="bg-softMint py-20 px-6 border-y border-borderMuted">
         <div class="max-w-5xl mx-auto reveal">
             <div class="text-center mb-12">
@@ -263,7 +281,7 @@
                     
                     <div class="flex flex-wrap gap-2 mt-4 justify-center">
                         <span class="bg-forest text-vanilla text-[11px] px-2.5 py-0.5 rounded-full font-bold">🏫 산업공학과 학사</span>
-                        <span class="bg-forest text-vanilla text-[11px] px-2.5 py-0.5 rounded-full font-bold">🎓 SSAFY 16기</span>
+                        <span class="bg-forest text-vanilla text-[11px] px-2.5 py-0.5 rounded-full font-bold">🎓 SSAFY 12기</span>
                         <span class="bg-amberOrange text-white text-[11px] px-2.5 py-0.5 rounded-full font-bold">🧭 ISTP (만능재주꾼)</span>
                     </div>
 
@@ -302,7 +320,7 @@
                             제가 깊이 몰입한 <em>'슈퍼 마리오 메이커 2'</em> 역시 단순 놀이가 아니라, 사용자가 어떠한 지점에서 낙담하고 흥미를 잃어 이탈하는지 데이터를 기반으로 시뮬레이션하고 최적의 UX 맵 동선을 모델링해보는 <strong>첫 기획 실험실</strong>이었습니다.
                         </p>
                         <p>
-                            1원 단위의 무결성이 중요한 금융 도메인 기획과 분석에 산업공학의 데이터 기반 의사결정 프레임을 적용하고자 합니다. SSAFY 안에서 실제 서비스의 기획부터 런칭까지 완주하고, <strong>정량적 A/B 테스트</strong>를 성공적으로 세팅하여 성장을 주도하는 '그로스 PM / 데이터 분석가'가 되겠습니다.
+                            1원 단위의 무결성이 중요한 금융 도메인 기획과 분석에 산업공학의 데이터 기반 의사결정 프레임을 적용하고자 합니다. SSAFY 12기 안에서 실제 서비스의 기획부터 런칭까지 완주하고, <strong>정량적 A/B 테스트</strong>를 성공적으로 세팅하여 성장을 주도하는 '그로스 PM / 데이터 분석가'가 되겠습니다.
                         </p>
                     </div>
 
@@ -318,6 +336,7 @@
         </div>
     </section>
 
+    <!-- Key Points Section -->
     <section id="features" class="py-20 px-6 bg-vanilla">
         <div class="max-w-5xl mx-auto reveal">
             <div class="text-center mb-16">
@@ -366,6 +385,236 @@
                     </div>
                     <span class="text-xs font-bold text-amberOrange mt-6 tracking-widest uppercase block">Systems Engineer & PM</span>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 💡 [NEW] Career & Project Section (인터랙티브 커리어 필터 보드) -->
+    <section id="career" class="py-20 px-6 bg-softMint/15 border-t border-borderMuted">
+        <div class="max-w-5xl mx-auto reveal">
+            <div class="text-center mb-10">
+                <span class="text-amberOrange text-sm font-bold tracking-widest uppercase">ACADEMIC & PROFESSIONAL CAREER</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-2 font-title text-forest">정소연의 실전 프로젝트 도안</h2>
+                <p class="text-textMuted text-sm mt-2">한 코 한 코 뜨개가 모여 옷이 되듯, 정교한 연구와 데이터 분석이 모여 완성된 이력입니다.</p>
+                <div class="w-16 h-1 bg-amberOrange mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- 대시보드 탭 필터 컨트롤러 -->
+            <div class="flex justify-center gap-3 mb-10 flex-wrap">
+                <button onclick="filterCareer('all')" id="tab-all" class="career-tab-btn active bg-forest text-vanilla px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-md hover:bg-amberOrange hover:text-white transition-all duration-300">
+                    전체 보기
+                </button>
+                <button onclick="filterCareer('award')" id="tab-award" class="career-tab-btn bg-cardBg text-forest px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border border-borderMuted shadow-sm hover:bg-amberOrange hover:text-white transition-all duration-300">
+                    🏆 수상 내역
+                </button>
+                <button onclick="filterCareer('research')" id="tab-research" class="career-tab-btn bg-cardBg text-forest px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border border-borderMuted shadow-sm hover:bg-amberOrange hover:text-white transition-all duration-300">
+                    🔬 학부 연구 & 활동
+                </button>
+                <button onclick="filterCareer('intern')" id="tab-intern" class="career-tab-btn bg-cardBg text-forest px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border border-borderMuted shadow-sm hover:bg-amberOrange hover:text-white transition-all duration-300">
+                    💼 인턴 & 봉사
+                </button>
+            </div>
+
+            <!-- 커리어 카드 그리드 컨테이너 -->
+            <div id="careerGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-500">
+                
+                <!-- 수상 1 -->
+                <div class="career-card bg-cardBg p-6 sm:p-8 rounded-3xl border border-borderMuted shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between" data-category="award">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-2xl sm:text-3xl">🏆</span>
+                            <span class="text-[10px] bg-amberOrange/20 text-amberOrange px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">추계학술제 우수상</span>
+                        </div>
+                        <h4 class="font-bold text-lg text-forest font-title mb-1">교내 교통혼잡도 문제 해결 및 사회적 가치 실현 프로젝트</h4>
+                        <p class="text-xs text-amberOrange font-bold mb-3">2024 경희대학교 산업경영공학과</p>
+                        <p class="text-xs text-textMuted leading-relaxed">
+                            교내의 만성적인 교통혼잡 문제를 산업공학적 대기행렬 이론 및 시스템 모델링을 통해 정량적으로 분석하고, 사회적 가치를 창출하는 실효성 높은 개선안을 도출해 우수상을 수상했습니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-borderMuted flex gap-2">
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#시스템최적화</span>
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#대기행렬이론</span>
+                    </div>
+                </div>
+
+                <!-- 수상 2 -->
+                <div class="career-card bg-cardBg p-6 sm:p-8 rounded-3xl border border-borderMuted shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between" data-category="award">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-2xl sm:text-3xl">🚢</span>
+                            <span class="text-[10px] bg-amberOrange/20 text-amberOrange px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">경진대회 장려상 & 논문 게재</span>
+                        </div>
+                        <h4 class="font-bold text-lg text-forest font-title mb-1">비선형 AI 기반 항만물동량 예측 모델 개발 및 대시보드 구축</h4>
+                        <p class="text-xs text-amberOrange font-bold mb-3">2024년 스마트 해상물류 경진대회</p>
+                        <p class="text-xs text-textMuted leading-relaxed">
+                            비선형 AI 모델링 기법을 활용해 울산항의 물동량 시계열 추이를 초정밀 예측하고 분석 결과를 한눈에 제어할 수 있는 관제 대시보드를 직접 구현했습니다. 본 프로젝트 결과물은 우수성을 인정받아 <strong>정보처리학회 ACK 2024 학술발표대회 논문집(31권 2호)</strong>에 정식 논문으로 게재되었습니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-borderMuted flex gap-2">
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#시계열예측</span>
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#ACK2024논문</span>
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#대시보드</span>
+                    </div>
+                </div>
+
+                <!-- 수상 3 -->
+                <div class="career-card bg-cardBg p-6 sm:p-8 rounded-3xl border border-borderMuted shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between" data-category="award">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-2xl sm:text-3xl">📦</span>
+                            <span class="text-[10px] bg-amberOrange/20 text-amberOrange px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">학술전시회 대상 🥇</span>
+                        </div>
+                        <h4 class="font-bold text-lg text-forest font-title mb-1">친환경 도심지하물류 시스템을 위한 최적화 연구</h4>
+                        <p class="text-xs text-amberOrange font-bold mb-3">경희대학교 CAAS 동아리 학술전시회 학술부문</p>
+                        <p class="text-xs text-textMuted leading-relaxed">
+                            지상 교통 체증 완화와 탄소 감축을 목표로 하는 차세대 지하물류 네트워크 노선의 수학적 최적화 모형을 정밀 설계했습니다. 선도적인 물류 설계 기법을 인정받아 학술 전시회 최고의 영예인 <strong>대상</strong>을 수상했습니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-borderMuted flex gap-2">
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#친환경물류</span>
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#수학적최적화</span>
+                    </div>
+                </div>
+
+                <!-- 수상 4 -->
+                <div class="career-card bg-cardBg p-6 sm:p-8 rounded-3xl border border-borderMuted shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between" data-category="award">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-2xl sm:text-3xl">☀️</span>
+                            <span class="text-[10px] bg-amberOrange/20 text-amberOrange px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">협의회장상</span>
+                        </div>
+                        <h4 class="font-bold text-lg text-forest font-title mb-1">탄소중립도시 구현을 위한 도시형 PV 모델 개발</h4>
+                        <p class="text-xs text-amberOrange font-bold mb-3">2024 Co-Data Station(데이터 과학논술대회)</p>
+                        <p class="text-xs text-textMuted leading-relaxed">
+                            도심 건물의 공간 데이터를 기반으로 탄소중립 실현을 촉진할 수 있는 최적의 태양광(PV) 자원 활용 모델과 수학적 정량 시나리오를 구성하여 창의적이고 우수한 분석 논증으로 수상의 기쁨을 안았습니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-borderMuted flex gap-2">
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#데이터과학논술</span>
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#PV에너지모델</span>
+                    </div>
+                </div>
+
+                <!-- 연구실 1 -->
+                <div class="career-card bg-cardBg p-6 sm:p-8 rounded-3xl border border-borderMuted shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between" data-category="research">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-2xl sm:text-3xl">🔬</span>
+                            <span class="text-[10px] bg-forest/10 text-forest px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">빅데이터연구실 학부연구생</span>
+                        </div>
+                        <h4 class="font-bold text-lg text-forest font-title mb-1">서울시 스마트 헬스케어 (손목닥터 9988) 연구 과제</h4>
+                        <p class="text-xs text-textMuted font-semibold mb-3">경희대학교 빅데이터연구실 (2023.01.01 ~ 2024.02.29)</p>
+                        <p class="text-xs text-textMuted leading-relaxed">
+                            서울시의 대표 의료 과제에 투입되어 고독한 은둔/고립 청년 등 의료취약계층을 위한 맞춤형 스마트 헬스케어 IT 솔루션을 설계했습니다. 사용자 여정을 고려한 <strong>서비스 기획(UI/UX)과 앱 프론트 개발</strong>을 주도하며 논리와 따스함을 엮어냈습니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-borderMuted flex gap-2">
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#손목닥터9988</span>
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#의료IT기획</span>
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#헬스케어기획</span>
+                    </div>
+                </div>
+
+                <!-- 연구실 2 -->
+                <div class="career-card bg-cardBg p-6 sm:p-8 rounded-3xl border border-borderMuted shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between" data-category="research">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-2xl sm:text-3xl">🧬</span>
+                            <span class="text-[10px] bg-forest/10 text-forest px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">AI연구실 학부연구생</span>
+                        </div>
+                        <h4 class="font-bold text-lg text-forest font-title mb-1">강화학습 및 조합최적화를 활용한 배달 경로 최적화 연구</h4>
+                        <p class="text-xs text-textMuted font-semibold mb-3">경희대학교 AI 연구실 (2024.03.15 ~ 2024.12.15)</p>
+                        <p class="text-xs text-textMuted leading-relaxed">
+                            실시간 배차 알고리즘에 조합 최적화 수식과 강화학습(Reinforcement Learning) 에이전트를 도입하여 동적 이송 경로의 지연 시간을 혁신적으로 감소시키는 솔루션 아키텍처를 분석 및 개발했습니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-borderMuted flex gap-2">
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#강화학습</span>
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#조합최적화</span>
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#배달최적화</span>
+                    </div>
+                </div>
+
+                <!-- 활동 1 -->
+                <div class="career-card bg-cardBg p-6 sm:p-8 rounded-3xl border border-borderMuted shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between" data-category="research">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-2xl sm:text-3xl">👥</span>
+                            <span class="text-[10px] bg-forest/10 text-forest px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">학회 부회장</span>
+                        </div>
+                        <h4 class="font-bold text-lg text-forest font-title mb-1">데이터분석 및 인공지능 학술 동아리 KHUDA 부회장 임무</h4>
+                        <p class="text-xs text-textMuted font-semibold mb-3">경희대학교 KHUDA (2024.01.26 ~ 2025.01.31)</p>
+                        <p class="text-xs text-textMuted leading-relaxed">
+                            동아리 임원진으로서 <strong>경기도 AI 글로벌 포럼 대학생 세션 기획 및 발제</strong>, 타 대학 학회와의 <strong>연합 데이터톤 기획·운영 총괄</strong>을 진행했습니다. 외부 단체 협업, 마일스톤 관리 및 공공데이터를 활용한 분석 세션을 직접 리드하며 PM 역량을 공고히 다졌습니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-borderMuted flex gap-2">
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#KHUDA부회장</span>
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#데이터톤기획</span>
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#프로젝트관리</span>
+                    </div>
+                </div>
+
+                <!-- 연구실 3 / 멘토링 -->
+                <div class="career-card bg-cardBg p-6 sm:p-8 rounded-3xl border border-borderMuted shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between" data-category="research">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-2xl sm:text-3xl">⚓</span>
+                            <span class="text-[10px] bg-forest/10 text-forest px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">ICT 멘토링 최우수 인재</span>
+                        </div>
+                        <h4 class="font-bold text-lg text-forest font-title mb-1">울산항만공사 스마트해상물류 시계열 예측 프로젝트 수행</h4>
+                        <p class="text-xs text-textMuted font-semibold mb-3">울산항만공사 스마트해상물류 (2024.03.01 ~ 2024.10.31)</p>
+                        <p class="text-xs text-textMuted leading-relaxed">
+                            팀의 메인 데이터 사이언티스트 및 시계열 분석가 역할을 맡아, 비선형 딥러닝 AI 모형 기반의 울산항 물동량 타겟팅 시계열 예측과 현업에 즉시 적용 가능한 직관적인 분석 모니터링용 웹 대시보드 구조를 기획 및 구현하여 최종 장려상을 수상했습니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-borderMuted flex gap-2">
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#해상물류ICT</span>
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#시계열예측</span>
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#대시보드설계</span>
+                    </div>
+                </div>
+
+                <!-- 인턴십 1 -->
+                <div class="career-card bg-cardBg p-6 sm:p-8 rounded-3xl border border-borderMuted shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between" data-category="intern">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-2xl sm:text-3xl">💼</span>
+                            <span class="text-[10px] bg-forest/10 text-forest px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">연구원 인턴십</span>
+                        </div>
+                        <h4 class="font-bold text-lg text-forest font-title mb-1">인과추론 기반의 에너지 절감 최적화 프로젝트 수행</h4>
+                        <p class="text-xs text-textMuted font-semibold mb-3">한국전자통신연구원 (ETRI) 인턴</p>
+                        <p class="text-xs text-textMuted leading-relaxed">
+                            에너지 산업 데이터 분석 프로세스에 <strong>인과추론(Causal Inference) 프레임워크</strong>를 접목했습니다. 단순 상관관계를 넘어 실제 전력 에너지 절감을 유도하는 결정적인 인과 요인을 수학적으로 가려내는 정밀 가상 시나리오 과제를 안정적으로 완수했습니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-borderMuted flex gap-2">
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#ETRI인턴</span>
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#인과추론분석</span>
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#에너지최적화</span>
+                    </div>
+                </div>
+
+                <!-- 봉사 1 -->
+                <div class="career-card bg-cardBg p-6 sm:p-8 rounded-3xl border border-borderMuted shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between" data-category="intern">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="text-2xl sm:text-3xl">🤝</span>
+                            <span class="text-[10px] bg-forest/10 text-forest px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">교육 봉사 교안부장</span>
+                        </div>
+                        <h4 class="font-bold text-lg text-forest font-title mb-1">대학생 코딩교육봉사 동아리 커리큘럼 총괄 설계</h4>
+                        <p class="text-xs text-textMuted font-semibold mb-3">대딩코딩코딩교육봉사 동아리 교안부장</p>
+                        <p class="text-xs text-textMuted leading-relaxed">
+                            디지털 리터러시 격차 해소를 위해 아동 및 청소년을 위한 쉽고 체계적인 파이썬 알고리즘 교안을 부장으로서 제작했습니다. 비전공자나 아동의 학습 눈높이에 맞춰 학습 여정(UX)을 세심하게 쪼개고 설계하여 성공적인 멘토링 활동을 리드했습니다.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-borderMuted flex gap-2">
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#코딩교육봉사</span>
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#교안부장</span>
+                        <span class="text-[10px] bg-forest/5 text-forest/70 px-2.5 py-1 rounded">#커리큘럼설계</span>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -426,7 +675,7 @@
                         <span class="text-xs font-semibold text-amberOrange tracking-wide block mb-1">FAST TIME</span>
                         <h4 class="text-lg font-bold text-forest mb-2">두근두근 닌텐도 모험 아일랜드</h4>
                         <p class="text-sm text-textMuted leading-relaxed">
-                            스위치 속 모험의 스크란샷과 최애작 추천 목록을 통해, 사용자가 감동과 재미를 온몸으로 겪는 훌륭한 게임 UX의 정수를 연구합니다.
+                            스위치 속 모험의 스크린샷과 최애작 추천 목록을 통해, 사용자가 감동과 재미를 온몸으로 겪는 훌륭한 게임 UX의 정수를 연구합니다.
                         </p>
                     </div>
                 </div>
@@ -434,7 +683,7 @@
                 <!-- 단계 5 -->
                 <div class="relative pl-8 md:pl-12 roadmap-step" data-step="5">
                     <span id="dot-5" class="absolute -left-[17px] top-1 bg-forest text-vanilla w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shadow-md transition-all duration-300">5</span>
-                    <div class="bg-cardBg p-6 rounded-2xl border border-borderMuted shadow-sm hover:shadow-md transition-shadow">
+                    <div class="bg-cardBg p-6 rounded-2xl border border-amberOrange/30 shadow-md">
                         <span class="text-xs font-semibold text-amberOrange tracking-wide block mb-1">OUTRO</span>
                         <h4 class="text-lg font-bold text-forest mb-2">당신을 맞이할 다정다감 연결망</h4>
                         <p class="text-sm text-textMuted leading-relaxed">
@@ -461,8 +710,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 
                 <!-- 게임 1: 젤다 왕눈 -->
-                <!-- 배경 이미지는 인라인 style의 url('...') 부분을 본인이 가진 로컬 경로 혹은 소장 중인 이미지 주소로 변경하여 즉시 교환하실 수 있습니다! -->
-                <a href="https://www.nintendo.com/kr/zelda/totk/world/index.html?srsltid=AfmBOoqoLAoSjG1U2lMxM0Xvnm_3g4GzQFwFkdyVI6yb7HsIo7LYhipu" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://i.namu.wiki/i/IOdQA_SkCEjQSUZ789WQQxCVWTGatDVsFeHy-q3mqk395o2NsvMmj7boNSni8tecj7XCpvQto5gJsXu_j4jm8EGeU6lU9teh4M2Qj8nGJTg1H7397pJ1ULqlFamf6tw0C4-v5gqJZLBmfSN8ATeXKQ.webp'); background-size: cover; background-position: center;">
+                <a href="https://www.nintendo.com/kr/zelda/totk/world/index.html?srsltid=AfmBOoqoLAoSjG1U2lMxM0Xvnm_3g4GzQFwFkdyVI6yb7HsIo7LYhipu" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://images.unsplash.com/photo-1552820728-8b83bb6b773f?auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
                     <div class="z-10">
                         <div class="flex justify-between items-start mb-4">
                             <span class="text-3xl">⚔️</span>
@@ -479,12 +727,12 @@
                     </div>
                     <div class="mt-4 pt-3 border-t border-borderMuted flex justify-between items-center text-xs text-textMuted z-10">
                         <span class="group-hover:text-amberOrange transition-colors font-bold">공식 사이트 보기 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></span>
-                        <span class="text-amberOrange">⭐⭐⭐⭐⭐|⭐⭐</span>
+                        <span class="text-amberOrange">⭐⭐⭐⭐⭐</span>
                     </div>
                 </a>
 
                 <!-- 게임 2: 젤다 야숨 -->
-                <a href="https://www.nintendo.com/kr/switch/aaaaa/?srsltid=AfmBOopaVVtXrQLmIB4q2y2hRaLOI36-89IsNgw6gAHEbkfF3MRsk2dN" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://i.namu.wiki/i/pIwAeskaoen18hBFGVvmX4O4jseXHQGxLvaIm9r_F-uJJpHmVOJF_dV64C9V9IKSMqAqmlnyzIGY4Zvxq84M5OBxtWv9X-VZ3OYRunRusc_kurgaGMyUtNKxu-moZJxxVZpHM9FV9XsQSBR7uw0_AA.webp'); background-size: cover; background-position: center;">
+                <a href="https://www.nintendo.com/kr/switch/aaaaa/?srsltid=AfmBOopaVVtXrQLmIB4q2y2hRaLOI36-89IsNgw6gAHEbkfF3MRsk2dN" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
                     <div class="z-10">
                         <div class="flex justify-between items-start mb-4">
                             <span class="text-3xl">🛡️</span>
@@ -501,12 +749,12 @@
                     </div>
                     <div class="mt-4 pt-3 border-t border-borderMuted flex justify-between items-center text-xs text-textMuted z-10">
                         <span class="group-hover:text-amberOrange transition-colors font-bold">공식 사이트 보기 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></span>
-                        <span class="text-amberOrange">⭐⭐⭐⭐⭐|⭐</span>
+                        <span class="text-amberOrange">⭐⭐⭐⭐⭐</span>
                     </div>
                 </a>
 
                 <!-- 게임 3: 리듬천국 -->
-                <a href="https://www.nintendo.com/kr/switch/bflta/index.html?srsltid=AfmBOooHYi0Uz7sbJRPbg_GssmAae5qEhX_b-iXCurZPiBk_t1lvmwf_" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://i.namu.wiki/i/81xHEV0hR3sNk69Ig5LlOJHRS7rS6MttaguEYu74OtWh_KPgfqV2RABQxfn3c0XgehiCktmdjTJVYLCK_DyKjFEvZwZbe3gBRrYNOCezeWoG3YHnLawPHbsT8bv26f7p_tE_fcPoY_h7iTXAwdVagw.webp'); background-size: cover; background-position: center;">
+                <a href="https://www.nintendo.com/kr/switch/bflta/index.html?srsltid=AfmBOooHYi0Uz7sbJRPbg_GssmAae5qEhX_b-iXCurZPiBk_t1lvmwf_" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
                     <div class="z-10">
                         <div class="flex justify-between items-start mb-4">
                             <span class="text-3xl">🐒</span>
@@ -523,12 +771,12 @@
                     </div>
                     <div class="mt-4 pt-3 border-t border-borderMuted flex justify-between items-center text-xs text-textMuted z-10">
                         <span class="group-hover:text-amberOrange transition-colors font-bold">공식 사이트 보기 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></span>
-                        <span class="text-amberOrange">⭐⭐⭐⭐</span>
+                        <span class="text-amberOrange">⭐⭐⭐⭐⭐</span>
                     </div>
                 </a>
 
                 <!-- 게임 4: 동물의 숲 -->
-                <a href="https://www.nintendo.com/kr/switch/acbaa/index.html?srsltid=AfmBOoqC0Qc934WZU6JPsFZbK5UwoVLSAIpargXyNE4g5i3aGUauNU8g" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://i.namu.wiki/i/iuNHhJykXD_4L5wBZeZDo--yYDFQRqdmYRwiQCfKm2BjND94lJ6lCHiSrYcBJq6zATrna2ZW-VsYOAGppYxWIe5PGHhSR_oL1yBg5PQiINofBkWb2o9i6x1s0UVsn-DC2bCwjV0--vAbyyQ5UHIeZg.webp'); background-size: cover; background-position: center;">
+                <a href="https://www.nintendo.com/kr/switch/acbaa/index.html?srsltid=AfmBOoqC0Qc934WZU6JPsFZbK5UwoVLSAIpargXyNE4g5i3aGUauNU8g" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
                     <div class="z-10">
                         <div class="flex justify-between items-start mb-4">
                             <span class="text-3xl">🏕️</span>
@@ -545,12 +793,12 @@
                     </div>
                     <div class="mt-4 pt-3 border-t border-borderMuted flex justify-between items-center text-xs text-textMuted z-10">
                         <span class="group-hover:text-amberOrange transition-colors font-bold">공식 사이트 보기 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></span>
-                        <span class="text-amberOrange">⭐⭐</span>
+                        <span class="text-amberOrange">⭐⭐⭐⭐⭐</span>
                     </div>
                 </a>
 
                 <!-- 게임 5: 마리오 오디세이 -->
-                <a href="https://www.nintendo.com/kr/switch/aaaca/index.html?srsltid=AfmBOooXTekvMP_zBMchik_OcW4xZWfs2ro9Dn1gd4v0Noe0LRCkbgkW" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://i.namu.wiki/i/VEqxpi66Drzx7j2yCBbZGyYQskeJgpiFcU-h92sGuvIP8cZAK1tD-WisF-2aryL1Isc66FeMasBD6lr_8-yoYahqATCWLyU57kUlcPTFBY2uIjwV2Hm85VLRXj0i-qRWwgugriUllexymkGYAHZqNA.webp'); background-size: cover; background-position: center;">
+                <a href="https://www.nintendo.com/kr/switch/aaaca/index.html?srsltid=AfmBOooXTekvMP_zBMchik_OcW4xZWfs2ro9Dn1gd4v0Noe0LRCkbgkW" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://images.unsplash.com/photo-1534488972407-5a4aa1e47d83?auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
                     <div class="z-10">
                         <div class="flex justify-between items-start mb-4">
                             <span class="text-3xl">🎩</span>
@@ -567,12 +815,12 @@
                     </div>
                     <div class="mt-4 pt-3 border-t border-borderMuted flex justify-between items-center text-xs text-textMuted z-10">
                         <span class="group-hover:text-amberOrange transition-colors font-bold">공식 사이트 보기 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></span>
-                        <span class="text-amberOrange">⭐⭐⭐⭐</span>
+                        <span class="text-amberOrange">⭐⭐⭐⭐⭐</span>
                     </div>
                 </a>
 
                 <!-- 게임 6: 마리오 메이커 2 -->
-                <a href="https://www.nintendo.com/kr/switch/baaqa/pc/" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://i.namu.wiki/i/ztJcSxEXwzdRmF0GFZ7WTwDNbeVi3hd8FQhiheM8JpQwEP1ehJAlAyHnFVrN-0xdGdCoa6JP2QmtOepnfvXCexZQlXJInTCNomtIyET7CS_Mk1i4SuW2ot-ir5QOLZS5SPLKsmyuUwBtaEAOvh41TA.webp'); background-size: cover; background-position: center;">
+                <a href="https://www.nintendo.com/kr/switch/baaqa/pc/" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
                     <div class="z-10">
                         <div class="flex justify-between items-start mb-4">
                             <span class="text-3xl">🧱</span>
@@ -594,7 +842,7 @@
                 </a>
 
                 <!-- 게임 7: 별의 커비 -->
-                <a href="https://www.nintendo.com/kr/switch/arzga/index.html" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://i.namu.wiki/i/kecfSCndilMlm6m2Xiie5wuaZdplzR67HCrTHjxrnKD-qOMGzyaupqT8n4duW45WZHDdyjbAjKdaWkFguTa58lvbVXGNKCkQHUfyhAedUyiCqO6jayMnD9XY2HrAa-ZmDnMuXnV__EwRVw5hdWlm2g.webp'); background-size: cover; background-position: center;">
+                <a href="https://www.nintendo.com/kr/switch/arzga/index.html" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
                     <div class="z-10">
                         <div class="flex justify-between items-start mb-4">
                             <span class="text-3xl">⭐</span>
@@ -611,12 +859,12 @@
                     </div>
                     <div class="mt-4 pt-3 border-t border-borderMuted flex justify-between items-center text-xs text-textMuted z-10">
                         <span class="group-hover:text-amberOrange transition-colors font-bold">공식 사이트 보기 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></span>
-                        <span class="text-amberOrange">⭐⭐⭐</span>
+                        <span class="text-amberOrange">⭐⭐⭐⭐</span>
                     </div>
                 </a>
 
                 <!-- 게임 8: 마리오 3D 월드 -->
-                <a href="https://www.nintendo.com/kr/switch/auzpa/index.html" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://i.namu.wiki/i/GKVITQJBNW1-wnEcwsCR8pT8FuEZb3YKQRM1aEOVwpqasZ67sXlTtsL3TQuirCl97j9hTk0A1AI_hof1X_9gJh8I65nT0hbgRWEJcG5IKnh-1-Td08vzhvcZNVxn5jB2R8rMtzp7h6AjbcZBh1sqIA.webp'); background-size: cover; background-position: center;">
+                <a href="https://www.nintendo.com/kr/switch/auzpa/index.html" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://images.unsplash.com/photo-1551103782-8ab07afd45c1?auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
                     <div class="z-10">
                         <div class="flex justify-between items-start mb-4">
                             <span class="text-3xl">🐱</span>
@@ -633,12 +881,12 @@
                     </div>
                     <div class="mt-4 pt-3 border-t border-borderMuted flex justify-between items-center text-xs text-textMuted z-10">
                         <span class="group-hover:text-amberOrange transition-colors font-bold">공식 사이트 보기 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></span>
-                        <span class="text-amberOrange">⭐⭐⭐⭐⭐</span>
+                        <span class="text-amberOrange">⭐⭐⭐⭐</span>
                     </div>
                 </a>
 
                 <!-- 게임 9: 마리오파티 잼버리 -->
-                <a href="https://www.nintendo.com/kr/switch/a7hla/index.html?srsltid=AfmBOorbHXVG6KmSC09d1bFUb_zlgsd1K9QNv1LETHzTOWonK9g5IJeS" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://i.namu.wiki/i/25ESq_7hmrldG4GKWc22lMRjhQajdDIH8xZsQoa2bTMUWEDDhjcaLQhhqc5ckJOVXB_66AguurED1UkDMF1YAfW8YfEojsMpIp67A28Ap5a2mpZTjtzRuD5bn36mL9obUjoY_yPs2o5sE8DNVmZAFQ.webp'); background-size: cover; background-position: center;">
+                <a href="https://www.nintendo.com/kr/switch/a7hla/index.html?srsltid=AfmBOorbHXVG6KmSC09d1bFUb_zlgsd1K9QNv1LETHzTOWonK9g5IJeS" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://images.unsplash.com/photo-1486572788966-cfd3df1f5b42?auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
                     <div class="z-10">
                         <div class="flex justify-between items-start mb-4">
                             <span class="text-3xl">🎪</span>
@@ -660,7 +908,7 @@
                 </a>
 
                 <!-- 게임 10: 뉴 마리오 U 디럭스 -->
-                <a href="https://www.nintendo.com/kr/switch/adala/pc/" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://i.namu.wiki/i/Lnm-3opIXSbk_Gow-YgerNGXAfkGj2HstL5GV6Apb2MiNZy-gVhQzDXWqHVTxl5uFBNbNhT2OXg75R2g-ljLsf9rsWaM98qAxA1ipbo7bgvRA4J9LAIOOukP6X0uN6oPA1OuZOF53-hPQPzGm3gt5w.webp'); background-size: cover; background-position: center;">
+                <a href="https://www.nintendo.com/kr/switch/adala/pc/" target="_blank" class="block bg-cardBg p-6 rounded-3xl border border-borderMuted shadow-md hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-3 flex flex-col justify-between relative overflow-hidden group" style="background-image: linear-gradient(rgba(var(--bg-gradient-rgb), 0.88), rgba(var(--bg-gradient-rgb), 0.95)), url('https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?auto=format&fit=crop&w=600&q=80'); background-size: cover; background-position: center;">
                     <div class="z-10">
                         <div class="flex justify-between items-start mb-4">
                             <span class="text-3xl">🍄</span>
@@ -677,7 +925,7 @@
                     </div>
                     <div class="mt-4 pt-3 border-t border-borderMuted flex justify-between items-center text-xs text-textMuted z-10">
                         <span class="group-hover:text-amberOrange transition-colors font-bold">공식 사이트 보기 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i></span>
-                        <span class="text-amberOrange">⭐⭐⭐</span>
+                        <span class="text-amberOrange">⭐⭐⭐⭐</span>
                     </div>
                 </a>
 
@@ -748,101 +996,90 @@
         </div>
     </section>
 
-    <!-- 5. Gallery Section (How to replace images is documented below in the actual response and commented in code) -->
-    <section id="gallery" class="py-20 px-6 bg-vanilla">
-        <div class="max-w-5xl mx-auto reveal">
+    <!-- 5. Gallery Section -->
+    <section id="gallery" class="py-20 px-6 bg-vanilla relative overflow-hidden">
+        <!-- 배경 파티클 효과 -->
+        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
+            <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+            <div class="particle"></div><div class="particle"></div>
+        </div>
+
+        <div class="max-w-5xl mx-auto relative z-10 reveal">
             <div class="text-center mb-16">
                 <span class="text-amberOrange text-sm font-bold tracking-widest uppercase">GALLERY ARCHIVE</span>
-                <h2 class="text-3xl sm:text-4xl font-bold mt-2 font-title text-forest">소담한 작품 및 게임 아카이빙</h2>
+                <!-- 제목 타이핑 효과 적용지점 -->
+                <h2 id="typing-title" class="text-3xl sm:text-4xl font-bold mt-2 font-title text-forest h-16 flex items-center justify-center"></h2>
                 <p class="text-textMuted text-sm mt-2">나의 뜨개 가디건, 기워 낸 인형, 그리고 닌텐도 게임 스크린샷들의 순간순간들 (올려놓는 분야에 따라 커서가 바뀝니다!)</p>
                 <div class="w-16 h-1 bg-amberOrange mx-auto mt-4 rounded-full"></div>
             </div>
 
-            <!-- 6장 카드 레이아웃 (img 태그의 src를 변경하여 원본 이미지로 교환하기 가장 쉬운 구조 설계) -->
+            <!-- 6장 카드 레이아웃 -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 
                 <!-- 갤러리 1 (Knit) -->
                 <div class="group relative overflow-hidden rounded-2xl border border-borderMuted bg-gray-200 aspect-[4/3] shadow-md transition-all duration-300 hover-knit">
-                    <!-- 💡 이미지 바꾸는 법: 아래 src의 주소를 소연님의 실제 사진 이미지 경로(예: ./images/my_knit_1.jpg)로 변경해 주세요! -->
                     <img src="가디건.jpeg" alt="가디건 뜨개" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
-                    
                     <div class="absolute inset-0 bg-gradient-to-tr from-forest to-forest/30 opacity-70 group-hover:opacity-60 transition-opacity duration-300"></div>
                     <div class="absolute inset-0 flex flex-col justify-end p-6 text-white z-10">
                         <span class="text-xs bg-amberOrange text-white px-2 py-0.5 rounded-md w-fit mb-2 font-bold">🧶 뜨개</span>
                         <h4 class="font-bold text-lg font-title">첫눈에 사랑에 빠진 모헤어 가디건</h4>
                         <p class="text-xs text-white/80 mt-1 font-bold">대바늘 | 차콜 그레이 | 2026 완성</p>
                     </div>
-                   
                 </div>
 
                 <!-- 갤러리 2 (Knit) -->
                 <div class="group relative overflow-hidden rounded-2xl border border-borderMuted bg-gray-200 aspect-[4/3] shadow-md transition-all duration-300 hover-knit">
-                    <!-- 💡 이미지 바꾸는 법: 아래 src의 주소를 실제 이미지 파일 경로로 변경해 주세요! -->
                     <img src="스누피.jpg" alt="원숭이 인형" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
-                    
                     <div class="absolute inset-0 bg-gradient-to-tr from-forest to-forest/30 opacity-70 group-hover:opacity-60 transition-opacity duration-300"></div>
                     <div class="absolute inset-0 flex flex-col justify-end p-6 text-white z-10">
                         <span class="text-xs bg-amberOrange text-white px-2 py-0.5 rounded-md w-fit mb-2 font-bold">🧶 코바늘</span>
                         <h4 class="font-bold text-lg font-title">동글동글 스누피 & 우드스탁 코바늘 인형</h4>
-                        <p class="text-xs text-white/80 mt-1 font-bold">코바늘 ∙ 면실 ∙ 덕업일치</p>
+                        <p class="text-xs text-white/80 mt-1 font-bold">코바늘 · 면실 · 덕업일치</p>
                     </div>
-                    
                 </div>
 
                 <!-- 갤러리 3 (Game) -->
                 <div class="group relative overflow-hidden rounded-2xl border border-borderMuted bg-gray-200 aspect-[4/3] shadow-md transition-all duration-300 hover-game">
-                    <!-- 💡 이미지 바꾸는 법: 아래 src의 주소를 실제 이미지 파일 경로로 변경해 주세요! -->
                     <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80" alt="젤다 야숨" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
-                    
                     <div class="absolute inset-0 bg-gradient-to-tr from-forest to-forest/30 opacity-70 group-hover:opacity-60 transition-opacity duration-300"></div>
                     <div class="absolute inset-0 flex flex-col justify-end p-6 text-white z-10">
                         <span class="text-xs bg-forest text-white px-2 py-0.5 rounded-md w-fit mb-2 font-bold">🎮 닌텐도</span>
                         <h4 class="font-bold text-lg font-title">젤다 야숨: 하이랄 대륙 석양의 낭만</h4>
                         <p class="text-xs text-white/80 mt-1 font-bold">Nintendo Switch ∙ 명장면 스크린샷</p>
                     </div>
-                    
                 </div>
 
                 <!-- 갤러리 4 (Game) -->
                 <div class="group relative overflow-hidden rounded-2xl border border-borderMuted bg-gray-200 aspect-[4/3] shadow-md transition-all duration-300 hover-game">
-                    <!-- 💡 이미지 바꾸는 법: 아래 src의 주소를 실제 이미지 파일 경로로 변경해 주세요! -->
                     <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80" alt="리듬천국 기록" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
-                    
                     <div class="absolute inset-0 bg-gradient-to-tr from-forest to-forest/30 opacity-70 group-hover:opacity-60 transition-opacity duration-300"></div>
                     <div class="absolute inset-0 flex flex-col justify-end p-6 text-white z-10">
                         <span class="text-xs bg-forest text-white px-2 py-0.5 rounded-md w-fit mb-2 font-bold">🎮 닌텐도</span>
                         <h4 class="font-bold text-lg font-title">리듬천국 올 골드 메달 도전 일지</h4>
                         <p class="text-xs text-white/80 mt-1 font-bold">박자감 폭발 ∙ 요즘 최애 중독 게임</p>
                     </div>
-                    
                 </div>
 
                 <!-- 갤러리 5 (Knit) -->
                 <div class="group relative overflow-hidden rounded-2xl border border-borderMuted bg-gray-200 aspect-[4/3] shadow-md transition-all duration-300 hover-knit">
-                    <!-- 💡 이미지 바꾸는 법: 아래 src의 주소를 실제 이미지 파일 경로로 변경해 주세요! -->
                     <img src="베레모.JPG" alt="파스텔 실패키지" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
-                    
                     <div class="absolute inset-0 bg-gradient-to-tr from-forest to-forest/30 opacity-70 group-hover:opacity-60 transition-opacity duration-300"></div>
                     <div class="absolute inset-0 flex flex-col justify-end p-6 text-white z-10">
                         <span class="text-xs bg-amberOrange text-white px-2 py-0.5 rounded-md w-fit mb-2 font-bold">🧶 모자</span>
                         <h4 class="font-bold text-lg font-title">파스텔 톤 수입 모헤어실 베레모</h4>
                         <p class="text-xs text-white/80 mt-1 font-bold">실 냄새 솔솔 ∙ 여행지에서의 베레모 착용</p>
                     </div>
-                    
                 </div>
 
                 <!-- 갤러리 6 (Game) -->
                 <div class="group relative overflow-hidden rounded-2xl border border-borderMuted bg-gray-200 aspect-[4/3] shadow-md transition-all duration-300 hover-game">
-                    <!-- 💡 이미지 바꾸는 법: 아래 src의 주소를 실제 이미지 파일 경로로 변경해 주세요! -->
-                    <img src="따라큐.JPG" alt="젤다 왕눈 지저" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
-                    
+                    <img src="따라큐.JPG" alt="따라큐" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-all duration-500">
                     <div class="absolute inset-0 bg-gradient-to-tr from-forest to-forest/30 opacity-70 group-hover:opacity-60 transition-opacity duration-300"></div>
                     <div class="absolute inset-0 flex flex-col justify-end p-6 text-white z-10">
                         <span class="text-xs bg-forest text-white px-2 py-0.5 rounded-md w-fit mb-2 font-bold">🧶 인형</span>
                         <h4 class="font-bold text-lg font-title">코바늘 인형: 깜찍한 따라큐</h4>
                         <p class="text-xs text-white/80 mt-1 font-bold">싱크로율 최고^ㅁ^</p>
                     </div>
-                    
                 </div>
 
             </div>
@@ -919,12 +1156,14 @@
         </div>
     </section>
 
+    <!-- 푸터 -->
     <footer class="bg-forest py-8 px-6 text-center border-t border-borderMuted">
         <p class="text-vanilla/60 text-xs">
             © 2026 정소연 ∙ 시간이 느리게 흐르는 뜨개와 짜릿한 모험 사이. ALL RIGHTS RESERVED.
         </p>
     </footer>
 
+    <!-- JavaScript 기능 구현 -->
     <script>
         // --- 1. 다크모드/라이트모드 토글 상태 보존 설정 ---
         function toggleDarkMode() {
@@ -1055,7 +1294,40 @@
             });
         }
 
-        // --- 5. 실시간 스크롤 트래커 (Scroll-linked Timeline Roadmap & Revealer) ---
+        // --- 5. 커리어 필터링 제어 기능 ---
+        function filterCareer(category) {
+            // 버튼 상태 제어
+            const buttons = document.querySelectorAll('.career-tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active', 'bg-forest', 'text-vanilla');
+                btn.classList.add('bg-cardBg', 'text-forest');
+            });
+
+            const activeBtn = document.getElementById(`tab-${category}`);
+            activeBtn.classList.remove('bg-cardBg', 'text-forest');
+            activeBtn.classList.add('active', 'bg-forest', 'text-vanilla');
+
+            // 카드 리스트 필터링 애니메이션
+            const cards = document.querySelectorAll('.career-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.95) translateY(10px)';
+                
+                setTimeout(() => {
+                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                        card.style.display = 'flex';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1) translateY(0)';
+                        }, 50);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }, 300);
+            });
+        }
+
+        // --- 6. 실시간 스크롤 트래커 및 관찰자 설정 ---
         document.addEventListener("DOMContentLoaded", () => {
             // 초기 테마 로드
             const savedTheme = localStorage.getItem('theme');
@@ -1066,7 +1338,7 @@
                 updateThemeIcons(false);
             }
 
-            // A/B 테스트 바 초기 로드
+            // A/B 테스트 바 초기화
             updateABBars();
 
             // 방명록 렌더링
@@ -1087,7 +1359,7 @@
             });
             reveals.forEach(el => revealOnScroll.observe(el));
 
-            // 💡 로드맵 스크롤 추적 관찰자 (Intersection Observer)
+            // 로드맵 스크롤 추적 관찰자
             const roadmapSteps = document.querySelectorAll(".roadmap-step");
             const roadmapDots = document.querySelectorAll("[id^='dot-']");
 
@@ -1107,13 +1379,26 @@
                     }
                 });
             }, {
-                threshold: 0.6, // 영역의 60% 이상 노출 시 실시간 변경
+                threshold: 0.6,
                 rootMargin: "-10% 0px -20% 0px"
             });
             roadmapSteps.forEach(step => roadmapObserver.observe(step));
+
+            // 아카이빙 갤러리 제목 타이핑 효과
+            const titleEl = document.getElementById('typing-title');
+            const text = "소담한 작품 및 게임 아카이빙";
+            let i = 0;
+            function typing() {
+                if (i < text.length) {
+                    titleEl.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typing, 150);
+                }
+            }
+            typing();
         });
 
-        // --- 6. HTML 전체 코드를 다운로드 받는 브라우저 기능 ---
+        // --- 7. HTML 전체 코드를 다운로드 받는 브라우저 기능 ---
         function downloadSelf() {
             const htmlContent = document.documentElement.outerHTML;
             const blob = new Blob([htmlContent], { type: 'text/html' });
